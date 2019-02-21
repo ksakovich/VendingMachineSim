@@ -1,4 +1,4 @@
-package com.lionheartwebtech;
+package com.lionheartwebtech.vendingmachinesim;
 
 import java.io.*;
 import java.sql.*;

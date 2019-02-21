@@ -6,8 +6,8 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>VendingMachineSim</servlet-name>
-        <url-pattern>/vending</url-pattern>
+        <servlet-name>VendingMachineSimServlet</servlet-name>
+        <url-pattern>/sim</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
