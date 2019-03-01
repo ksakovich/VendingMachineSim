@@ -38,31 +38,31 @@ public class VendingMachineSimServlet extends HttpServlet {
             logger.error("Template directory not found, directory: " + templateDir + ", exception: " + e);
         }
         
-//        logger.info("Connecting to the database...");
-//        
-//        String jdbcDriver = "org.mariadb.jdbc.Driver";
-//        logger.info("Loading JDBC Driver: " + jdbcDriver);
-//        try {
-//            Class.forName(jdbcDriver);
-//        } catch (ClassNotFoundException e) {
-//            logger.error("Unable to find JDBC driver on classpath.");
-//            return;
-//        }
-//        
-//        String connString = "jdbc:mariadb://";
-//        connString += "lionheartwebtech-db.cv18zcsjzteu.us-west-2.rds.amazonaws.com:3306";
-//        connString += "/bainbridge";
-//        connString += "?user=bainbridge&password=bainbridge";
-//        connString += "&useSSL=true&trustServerCertificate=true";
-//     
-//        try {
-//            jdbcConnection = DriverManager.getConnection(connString);
-//        } catch (SQLException e) {
-//            logger.error("Unable to connect to SQL Database with JDBC string: " + connString);
-//            throw new UnavailableException("Unable to connect to database.");
-//        }
-//        
-//        logger.info("...connected!");
+            logger.info("Connecting to the database...");
+        
+        String jdbcDriver = "org.mariadb.jdbc.Driver";
+        logger.info("Loading JDBC Driver: " + jdbcDriver);
+        try {
+            Class.forName(jdbcDriver);
+        } catch (ClassNotFoundException e) {
+            logger.error("Unable to find JDBC driver on classpath.");
+            return;
+        }
+        
+        String connString = "jdbc:mariadb://";
+        connString += "lionheartwebtech-db.cv18zcsjzteu.us-west-2.rds.amazonaws.com:3306";
+        connString += "/vashon";
+        connString += "?user=vashon&password=vashon";
+        connString += "&useSSL=true&trustServerCertificate=true";
+        
+    try {
+            jdbcConnection = DriverManager.getConnection(connString);
+        } catch (SQLException e) {
+            logger.error("Unable to connect to SQL Database with JDBC string: " + connString);
+            throw new UnavailableException("Unable to connect to database.");
+        }
+        
+        logger.info("...connected!");
         
         logger.info("==============================");
         logger.info("Finished init");
@@ -75,13 +75,13 @@ public class VendingMachineSimServlet extends HttpServlet {
         logger.info("Destroying " + VendingMachineSimServlet.class.getSimpleName() + " servlet");
         logger.info("##############################");
 
-//        logger.info("Disconnecting from the database.");
-//        try {
-//            jdbcConnection.close();
-//        } catch (SQLException e) {
-//            logger.error("Exception thrown while trying to close SQL Connection: " + e, e);
-//        }
-//        logger.info("Disconneced!");
+        logger.info("Disconnecting from the database.");
+        try {
+            jdbcConnection.close();
+        } catch (SQLException e) {
+            logger.error("Exception thrown while trying to close SQL Connection: " + e, e);
+        }
+        logger.info("Disconneced!");
         
         logger.info("##############################");
         logger.info("...done");
