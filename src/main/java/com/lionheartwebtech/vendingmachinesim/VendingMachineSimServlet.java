@@ -48,7 +48,7 @@ public class VendingMachineSimServlet extends HttpServlet {
             logger.error("Unable to find JDBC driver on classpath.");
             return;
         }
-        
+        //Creating new connection
         String connString = "jdbc:mariadb://";
         connString += "lionheartwebtech-db.cv18zcsjzteu.us-west-2.rds.amazonaws.com:3306";
         connString += "/vashon";
@@ -87,18 +87,19 @@ public class VendingMachineSimServlet extends HttpServlet {
         logger.info("...done");
         logger.info("##############################");
     }
-
+    
+    //TODO: doGet() 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long timeStart = System.currentTimeMillis();
         logger.debug("IN - doGet()");
-                
+               
         String command = request.getParameter("cmd");
         if (command == null) command = "home";
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
-
+        //TODO: Switch for templates
         switch (command) {
             case "home":
                 template = "homepage.tpl";
