@@ -1,0 +1,120 @@
+
+html { 
+    font-family: 'Ubuntu', sans-serif;
+	
+    color: white;
+    background-size: cover;
+  }
+  
+  
+   
+  input[type=button], input[type=submit], input[type=reset] {
+        background-color: #0198E1;
+        border: none;
+        color: white;
+        font-size: 18px;
+        padding: 10px 10px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+        width: 25%;
+        min-width: 200px;
+        max-width: 300px;
+        border-radius: 3px;
+        display: inline-block;
+		
+    }
+
+    input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+        background-color: #0088ca;
+    }
+
+#pageContentContainer {
+    width: 90%;
+	
+}
+        
+#textContainer {
+		   padding: 10px 0px 0px 30px;
+           width: 70%;
+           height: 250px;
+           font-family: Arial;
+		   font-size: 24px;
+		   font-weight: 400;
+		   text-align: center;
+		   line-height: 34px;
+		   color:#FFFFFF;
+        }
+#navButtons{
+		width: 178px;
+        height: 48px;
+		background-color:#000000;
+		background-repeat: repeat;
+		background-position: left top;
+		border: 1px solid      #CDCDCD;
+		border-radius: 7px;
+		}
+		
+#navButtons a{
+         font-family: Arial;
+        font-size: 27px;
+		font-weight: 400;
+		text-align: center;		
+		color:#FFFFFF;
+		padding-top: 5px;
+		}
+h1 {
+        width: 700px;
+		height: 30px;
+		font-family: Bell MT;
+		font-size: 48px;
+		font-weight: 400;
+		font-style: italic;
+		color:      #FFFFFF;
+    }
+        
+        p {
+            font-size: 24px;
+			
+        }
+        
+        
+footer{
+	border:solid 2px gray;
+	
+	float:center;
+	position:relative;
+	bottom: -200px;
+	opacity:.80;
+	background-color:black;
+	color:white;
+	font-family:geogia,Serif;
+	font-size:1.0em;
+}
+
+footer p{
+
+	width:100%;
+	display:inline-block;	
+	float:center;
+	position:relative;
+    padding: 10 px;
+}
+
+footer p a {
+	color:white;
+	font-size:0.6em;
+	padding: 40px;
+}
+
+
+body{
+background-color:black;
+color: white;
+}
+#bg{
+
+ float:right;
+ height:100px;
+ opacity: 0.23;
+}
