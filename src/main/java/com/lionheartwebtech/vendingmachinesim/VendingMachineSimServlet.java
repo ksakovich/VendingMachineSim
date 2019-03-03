@@ -104,7 +104,6 @@ public class VendingMachineSimServlet extends HttpServlet {
             case "home":
                 template = "homepage.tpl";
                 break;
-                
             default:
                 logger.info("Invalid GET command received: " + command);
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
