@@ -107,6 +107,7 @@ public class VendingMachineSimServlet extends HttpServlet {
                 break;
                 
             case "simulation":
+                //TODO: add model
                 template = "simulation.tpl";
                 break;
             default:
