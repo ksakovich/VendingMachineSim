@@ -100,19 +100,26 @@ public class VendingMachineSimServlet extends HttpServlet {
         String template = "";
         Map<String, Object> model = new HashMap<>();
         //TODO: Switch for templates
+        if(command != null){
         switch (command) {
             case "home":
                 template = "homepage.tpl";
+                break;
+                
+            case "simulation":
+                template = "simulation.tpl";
                 break;
             default:
                 logger.info("Invalid GET command received: " + command);
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 return;
         }
+        }
 
         processTemplate(response, template, model);
         long time = System.currentTimeMillis() - timeStart;
         logger.info("OUT - doGet() - " + time + "ms");
+    
     }
 
     @Override
