@@ -27,17 +27,9 @@ label {
   display: inline-block;
 }
 
-input[type=submit] {
-  background-color: black;
-  color: white;
-  padding: 12px  20px;
-  border: 2px solid white;
-  border-radius: 4px;
-  cursor: pointer;
-  float: left;
-}
 
-input[type=submit]:hover {
+
+.button:hover {
   background-color: gray;
 }
 
@@ -121,6 +113,17 @@ margin: 0;
   width: 10%;
 
 }
+		
+.button {
+  background-color: black;
+  color: white;
+  padding: 12px  20px;
+  border: 2px solid white;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+  
 </style>
 
 
@@ -158,8 +161,8 @@ margin: 0;
       <textarea id="message" name="message" placeholder="Message.." style="height:100px"></textarea>
     </div>
   </div>
-  <div class="row">
-    <input type="submit" value="Submit">
+  <div class="row"> 
+	 <a href="thankyou.html" class="button">Submit</a> 
   </div>
   </form>
   </div>
@@ -170,7 +173,7 @@ margin: 0;
 	<br><br>
 	<h2>Vashon's Vending</h2>
     <p>101010 111NE St</p>
-    <p>Kirkland, WA 8903</p>
+    <p>Kirkland, WA 89030, USA</p>
   </div>
   
   
@@ -182,7 +185,7 @@ margin: 0;
   </div>
   
 <div class ="footer">
-  <p> <a href = "question.html">Questions</a>  <a href = "contact.html">Contact us</a>  <a href = "video.html">Video</a> </p>
+  <p> <a href = "sim?page=questions">Questions</a>  <a href = "sim?page=contact">Contact us</a>  <a href = "sim?page=video">Video</a> </p>
 </div>
 
 

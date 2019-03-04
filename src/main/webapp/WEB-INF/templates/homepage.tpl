@@ -122,7 +122,7 @@ Our mission is to provide high-quality training with the most recent technology 
 				<center>
            
                     <div id="navButtons">
-                        <a href="sim?cmd=simulation">Start</a>
+                        <a href="./sim?cmd=simulation">Start</a>
                     </div>
                 </center>
                 

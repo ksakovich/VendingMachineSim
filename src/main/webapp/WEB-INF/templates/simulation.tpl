@@ -323,12 +323,12 @@ td p {
 	     
         <a href="sim?cmd=reset" class="button button1">Reset</a> 
   
-        <a href="sim?cmd=replaceItem" class="button button2">Replace Item</a> 
+        <a href="./sim?cmd=replaceItem" class="button button2">Replace Item</a> 
 
 		<a href="sim?cmd=buy" class="button button3">Buy</a> 
       </div>
 	  <div class = "column side1">
-		<a href="sim?cmd=exit" class="button button4">Exit</a> 
+		<a href="thankyou.html" class="button button4">Exit</a> 
     </div>
  </div>
 	 
