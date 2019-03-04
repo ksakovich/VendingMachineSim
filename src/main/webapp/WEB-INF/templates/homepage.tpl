@@ -12,21 +12,22 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/circliful/1.0.2/js/jquery.circliful.min.js"></script>
     </head>
 <style>
-#pageContentContainer {
-    width: 90%;
-	
+#pageContentContainer:after {
+  content: "";
+  display: table;
+  clear: both;	
 }
         
 #textContainer {
-		   padding: 10px 0px 0px 30px;
-           width: 70%;
+           padding: 10px 0px 0px 40px;
+           width: 50%;
            height: 250px;
            font-family: Arial;
-		   font-size: 24px;
-		   font-weight: 400;
-		   text-align: center;
-		   line-height: 34px;
-		   color:#FFFFFF;
+           font-size: 24px;
+           font-weight: 400px;
+           text-align: center;
+           line-height: 34px;
+           color:#FFFFFF;
         }
 #navButtons{
 		width: 178px;
@@ -34,7 +35,7 @@
 		background-color:#000000;
 		background-repeat: repeat;
 		background-position: left top;
-		border: 1px solid      #CDCDCD;
+		border: 1px solid #CDCDCD;
 		border-radius: 7px;
 		}
 		
@@ -47,24 +48,23 @@
 		padding-top: 5px;
 		}
 h1 {
-        width: 700px;
-		height: 30px;
-		font-family: Bell MT;
-		font-size: 48px;
-		font-weight: 400;
-		font-style: italic;
-		color:      #FFFFFF;
+        width: 800px;
+        padding: 10px 0px 0px 40px;
+	height: 30px;
+	font-family: Bell MT;
+	font-size: 45px;
+	font-weight: 400;
+	font-style: italic;
+	color: #FFFFFF;
     }
         
-        p {
-            font-size: 24px;
-			
-        }
+p {
+    font-size: 24px;	
+  }
         
         
-footer{
+.footer{
 	border:solid 2px gray;
-	
 	float:center;
 	position:relative;
 	bottom: -200px;
@@ -75,7 +75,7 @@ footer{
 	font-size:1.0em;
 }
 
-footer p{
+.footer p{
 
 	width:100%;
 	display:inline-block;	
@@ -84,7 +84,7 @@ footer p{
     padding: 10 px;
 }
 
-footer p a {
+.footer p a {
 	color:white;
 	font-size:0.6em;
 	padding: 40px;
@@ -92,14 +92,15 @@ footer p a {
 
 
 body{
-background-color:black;
-color: white;
+    background-color:black;
+    color: white;
+    margin:0px;
 }
 #bg{
 
- float:right;
- height:100px;
- opacity: 0.23;
+    float:right;
+    height:100px;
+    opacity: 0.23;
 }
 </style>
    <body>
@@ -112,14 +113,14 @@ color: white;
           
 
             <div id="textContainer">
-                
-             <p>  We provide an private network website with a simulation of an operating vending machine for manufacturing companies, 
-			 who want to train their employees to be experts in operating a wide variety of vending machines.
-			 Our Company charges money by providing access to the intranet web site with online simulators.
-			 Our mission is to provide high-quality training with the most recent technology of vending machines.</p>
+               
+             <p>  We provide an private network website with a simulation of an operating vending machine for manufacturing companies,
+who want to train their employees to be experts in operating a wide variety of vending machines.
+Our Company charges money by providing access to the intranet web site with online simulators.
+Our mission is to provide high-quality training with the most recent technology of vending machines.</p>
 
-
-                <center>
+				<center>
+           
                     <div id="navButtons">
                         <a href="sim?cmd=simulation">Start</a>
                     </div>
@@ -131,9 +132,9 @@ color: white;
 
 </body> 
 
-<footer role="footer">
-  <p> <a href ="sim?cmd=questions">Questions</a>  <a href ="sim?cmd=Contact">Contact us</a>  <a href ="sim?cmd=video">Video</a> </p>
-</footer>
+<div class="footer">
+  <p> <a href ="questions.html">Questions</a>  <a href ="contact.html">Contact us</a>  <a href ="video.html">Video</a> </p>
+</div>
 
 
 </html>

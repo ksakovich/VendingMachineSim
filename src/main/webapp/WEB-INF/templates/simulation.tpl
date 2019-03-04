@@ -9,81 +9,87 @@
     </head>
 	
 	 <style>
-#pageContentContainer {
-        width: 30%;
-       }
+#pageContentContainer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.column {
+  float: left;
+  padding: 10px;
+}
+.column.middle {
+  width:70%;
+}
 
-#navButton1{
-    right: 16 px;
-	top: 25%;
-	width: 129px;
-	height: 55px;
-	background: linear-gradient(to right,#679868,#FFFFFF);
-	background-repeat: repeat;
-	background-position: left top;
-	border: 1px solid  #CDCDCD;
-	border-radius: 8px;
+.column.side {
+ padding-top:5%;
+  width: 15%;
+}
+  .column.side1 {
+  padding-top: 15%;
+  width: 15%;
+}
+         
+		
+.button {
+ 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 13px 2px;
+  cursor: pointer;
+  
+}
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
 
-		}
-		
-#navButton1 a{
-	font-family: Arial;
-	font-size: 19px;
-	font-weight: 400;
-	color: #030303;
-	text-align:center;
-		}
-#navButton2{
-	width: 134px;
-	height: 53px;
-    background: linear-gradient(to right,#6ACCCB, #FFFFFF);
-	background-repeat: repeat;
-	background-position: left top;
-	border: 1px solid  #CDCDCD;
-	border-radius: 8px;
-		}
-		
-#navButton2 a{
-    font-family: Arial;
-	font-size: 19px;
-	font-weight: 400;
-	color: #030303;
-	text-align: center;
-		}
-#navButton3{
-	width: 134px;
-	height: 53px;
-	background: linear-gradient(to right,     #FF9900,     #FFFFFF);
-	background-repeat: repeat;
-	background-position: left top;
-	border: 1px solid      #CDCDCD;
-	border-radius: 8px;
-	}
-		
-#navButton3 a{
-    font-family: Arial;
-	font-size: 19px;
-	font-weight: 400;
-	text-align: center;
-	color:      #030303;
-		}
-#navButton4{
-	width: 120px;
-	height: 60px;
-	background-color:      #FC361D;
-	background-repeat: repeat;
-	background-position: left top;
-	border: 1px solid      #CDCDCD;
-	border-radius: 9px;
-		}
-		
-#navButton4 a{
-   font-family: Arial;
-	font-size: 21px;
-	font-weight: 700;
-	text-align: center;
-	color:#030303;
-			}
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button2:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+}
+
+.button3:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.button4 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button4:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+
+
 h1 {
         width: 743px;
 		height: 54px;
@@ -91,32 +97,31 @@ h1 {
 		font-size: 48px;
 		font-weight: 400;
 		font-style: italic;
-		color:      #FFFFFF;
+		color:#FFFFFF;
     }
         
-footer{
+.footer{
 	border:solid 2px gray;
 	float:center;
 	position:relative;
-	bottom: -140px;
 	opacity:.80;
 	background-color:black;
 	color:white;
 	font-family:geogia,Serif;
-	font-size:1.0em;
+	font-size:1.0em
+	margin-top: 20px;
 }
 
-footer p{
+.footer p{
 
 	width:100%;
 	display:inline-block;
-	
 	float:center;
 	position:relative;
     padding: 10 px;
 }
 
-footer p a {
+.footer p a {
 	color:white;
 	font-size:0.6em;
 	padding: 40px;
@@ -125,6 +130,7 @@ footer p a {
 body{
 background-color: black;
 color: white;
+margin: 0;
 }
 
 table, td {
@@ -281,11 +287,13 @@ td p {
     };
  </script>
  <body>
-    <center>
-        <h1> Vendidng Machine Demo</h1>
-        
-        <div id="pageContentContainer">
-
+    <center>  
+        <h1> Vendidng Machine Demo</h1> 
+    </center>
+	<div id="pageContentContainer">
+	    
+<div class="column middle">
+  <center>
   <table style="width:50%">
 		
    <tbody>
@@ -308,21 +316,25 @@ td p {
    </#sim>
  </tbody>
 </table>
-	    </div>
+	   
    </center>    
-    
-        <div id="navButton1"> <a href="sim?cmd=reset">Reset</a>  </div>
+</div>
+	<div class = "column side">
+	     
+        <a href="sim?cmd=reset" class="button button1">Reset</a> 
   
-        <div id="navButton2"> <a href="sim?cmd=replaceItem">Replace Item</a> </div>
+        <a href="sim?cmd=replaceItem" class="button button2">Replace Item</a> 
 
-		<div id="navButton3"> <a href="sim?cmd=buy">Buy</a> </div>
-		
-		<div id="navButton4"> <a href="sim?cmd=exit">Exit</a> </div>
+		<a href="sim?cmd=buy" class="button button3">Buy</a> 
+      </div>
+	  <div class = "column side1">
+		<a href="sim?cmd=exit" class="button button4">Exit</a> 
+    </div>
+ </div>
+	 
+<div class="footer">
+  <p> <a href ="questions.html">Questions</a>  <a href ="contact.html">Contact us</a>  <a href ="video.html">Video</a> </p>
+</div>
 
-
-  
-    </body>
-	<footer role="footer">
-  <p> <a href ="sim?cmd=questions">Questions</a>  <a href ="sim?cmd=contac">Contact us</a>  <a href ="sim?cmd=video">Video</a> </p>
-</footer>
+   </body>
 </html>
