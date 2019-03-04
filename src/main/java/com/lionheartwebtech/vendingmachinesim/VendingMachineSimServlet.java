@@ -110,6 +110,19 @@ public class VendingMachineSimServlet extends HttpServlet {
                 //TODO: add model
                 template = "simulation.tpl";
                 break;
+            case "replaceItem":
+                //TODO: add model
+                template = "replaceItem.tpl";
+                break;    
+            case "reset":
+                //TODO: add method
+                template = "simulation.tpl";
+                break;  
+            case "buy":
+                //TODO: add method
+                template = "simulation.tpl";
+                break;  
+                
             default:
                 logger.info("Invalid GET command received: " + command);
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -138,8 +151,16 @@ public class VendingMachineSimServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         switch (command) {
-            case "example":
-                // Example command code goes here
+            case "replaceItem":
+                template = "replaceItem.tpl";
+//                int itemID = 0;
+//                model.put("sim", VendingMachineSimDAO.getItemwithId(jdbcConnection, itemID));
+                       
+                
+                break;
+            case "buy":
+                template = "replaceItem.tpl";
+//        
                 break;
                 
             default:
@@ -170,6 +191,8 @@ private void processTemplate(HttpServletResponse response, String template, Map<
             logger.error("IO Error:", e);
         } 
     }
+   
+    
     
     @Override
     public String getServletInfo() {
