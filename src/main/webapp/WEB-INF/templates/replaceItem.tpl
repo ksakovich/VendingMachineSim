@@ -289,23 +289,23 @@ td p {
   <table style="width:50%">
 		
    <tbody>
-     <#sim sim as aisel>
+    
   <tr>
-    <td><p>A1 =<a id="aisel1">10</a></p> <img src=".\image\lays-classic.png" alt="1"height=100 width=100 onClick="onClick1()"> ${aisel.id=1}</td>
-    <td><p>A2 =<a id="aisel2">10</a></p> <img src=".\image\oreo.png" alt="2"height=100 width=100 onClick="onClick2()">${aisel.id=2}</td>
-    <td><p>A3 =<a id="aisel3">10</a></p><img src=".\image\reeses.png" alt="3"height=100 width=100 onClick="onClick3()">${aisel.id=3}</td>
+    <td><p>A1 =<a id="aisel1">10</a></p> <img src=".\image\lays-classic.png" alt="1"height=100 width=100 onClick="onClick1()"> </td>
+    <td><p>A2 =<a id="aisel2">10</a></p> <img src=".\image\oreo.png" alt="2"height=100 width=100 onClick="onClick2()"></td>
+    <td><p>A3 =<a id="aisel3">10</a></p><img src=".\image\Reeses.png" alt="3"height=100 width=100 onClick="onClick3()"></td>
   </tr>
    <tr>
-    <td><p>B1 =<a id="aisel4">10</a></p><img src=".\image\m&m.png" alt="4"height=100 width=100 onClick="onClick4()">${aisel.id=4}</td>
-    <td><p>B2 =<a id="aisel5">10</a></p><img src=".\image\preztle.png" alt="5"height=100 width=100 onClick="onClick5()">${aisel.id=5}</td>
-    <td><p>B3 =<a id="aisel6">10</a></p><img src=".\image\kitkat.png" alt="6"height=100 width=100 onClick="onClick6()">${aisel.id=6}</td>
+    <td><p>B1 =<a id="aisel4">10</a></p><img src=".\image\m&m.png" alt="4"height=100 width=100 onClick="onClick4()"></td>
+    <td><p>B2 =<a id="aisel5">10</a></p><img src=".\image\preztle.png" alt="5"height=100 width=100 onClick="onClick5()"></td>
+    <td><p>B3 =<a id="aisel6">10</a></p><img src=".\image\kitkat.png" alt="6"height=100 width=100 onClick="onClick6()"></td>
   </tr>
    <tr>
-    <td><p>C1 =<a id="aisel7">10</a></p><img src=".\image\doritos.png" alt="7"height=100 width=100 onClick="onClick7()">${aisel.id=7}</td>
-    <td><p>C2 =<a id="aisel8">10</a></p><img src=".\image\cheetos.png" alt="8"height=100 width=100 onClick="onClick8()">${aisel.id=8}</td>
-    <td><p>C3 =<a id="aisel9">10</a></p><img src=".\image\chexmix.png" alt="9"height=100 width=100 onClick="onClick9()">${aisel.id=9}</td>
+    <td><p>C1 =<a id="aisel7">10</a></p><img src=".\image\doritos.png" alt="7"height=100 width=100 onClick="onClick7()"></td>
+    <td><p>C2 =<a id="aisel8">10</a></p><img src=".\image\cheetos.png" alt="8"height=100 width=100 onClick="onClick8()"></td>
+    <td><p>C3 =<a id="aisel9">10</a></p><img src=".\image\chexmix.png" alt="9"height=100 width=100 onClick="onClick9()"></td>
   </tr>
-   </#sim>
+  
  </tbody>
 </table>
 	    </div>

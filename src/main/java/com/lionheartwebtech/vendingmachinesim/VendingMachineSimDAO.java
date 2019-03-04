@@ -51,7 +51,7 @@ public class VendingMachineSimDAO {
         executeSQLUpdateItems(conn, query);
     }
     
-    public static void resetSpecifcItem (Connection conn, int id){
+    public static void resetSpecificItem (Connection conn, int id){
        String query = "UPDATE Items SET Quantity = 10 WHERE ID=?";
        executeSQLUpdateItems(conn, query, ""+id);
     }
