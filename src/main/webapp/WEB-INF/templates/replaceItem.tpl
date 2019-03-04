@@ -4,8 +4,6 @@
         <title>Simulation</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/circliful/1.0.2/js/jquery.circliful.min.js"></script>
     </head>
 	
 	 <style>
@@ -323,6 +321,6 @@ td p {
   
     </body>
 	<footer role="footer">
-  <p> <a href = '/sim?cmd=questions'>Questions</a>  <a href = '/sim?cmd=contact'>Contact us</a>  <a href = '/sim?cmd=video'>Video</a> </p>
+  <p> <a href = "questions.html'>Questions</a>  <a href = "contact.html">Contact us</a>  <a href = "video.html">Video</a> </p>
 </footer>
 </html>

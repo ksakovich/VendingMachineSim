@@ -4,10 +4,7 @@
         <title>Simulation</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/circliful/1.0.2/js/jquery.circliful.min.js"></script>
     </head>
-	
 	 <style>
 #pageContentContainer:after {
   content: "";
