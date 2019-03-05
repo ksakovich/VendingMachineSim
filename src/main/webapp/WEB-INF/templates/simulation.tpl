@@ -214,16 +214,16 @@ td p {
 </div>
 	<div class = "column side">
 	     
-        <a href="sim?cmd=resetItem" class="button button1">Reset Item</a> 
+        <a href="./sim?cmd=resetItem" class="button button1">Reset Item</a> 
   
-        <a href="sim?cmd=replaceItem" class="button button2">Replace Item</a> 
+        <a href="./sim?cmd=replaceItem" class="button button2">Replace Item</a> 
 
-		<a href="sim?cmd=buy" class="button button3">Buy</a> 
+		<a href="./sim?cmd=buy" class="button button3">Buy</a> 
 		
-		<a href="sim?cmd=resetAll" class="button button1">Reset All</a> 
+		<a href="./sim?cmd=resetAll" class="button button1">Reset All</a> 
       </div>
 	  <div class = "column side1">
-		<a href="sim?cmd=exit" class="button button4">Exit</a> 
+		<a href="./sim?cmd=exit" class="button button4">Exit</a> 
     </div>
  </div>
 	 
