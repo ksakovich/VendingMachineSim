@@ -217,4 +217,7 @@ label {
   display: table;
   clear: both;
 }
+p{
+    font-size: 24px;
+}
 
