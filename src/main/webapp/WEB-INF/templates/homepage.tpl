@@ -2,14 +2,8 @@
 <html>
     <head>
         <title> Vending Machine</title>
-        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-        <link href="infoPages.css" type="text/css" rel="stylesheet">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
-		<link href="main.css" type="text/css" rel="stylesheet">
-        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/circliful/1.0.2/js/jquery.circliful.min.js"></script>
     </head>
 <style>
 #pageContentContainer:after {
