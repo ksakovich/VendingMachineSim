@@ -67,13 +67,22 @@ h1 {
         width: 700px;
 		height: 30px;
 		font-family: Bell MT;
-		font-size: 48px;
+		font-size: 45px;
 		font-weight: 400;
 		font-style: italic;
 		color:      #FFFFFF;
     }
         
- 
+ h2 {
+        width: 800px;
+		height: 30px;
+		font-family: Bell MT;
+		font-size: 45px;
+		font-weight: 400;
+		font-style: italic;
+		color:      #FFFFFF;
+    }
+        
 #pageContainer {
         width: 90%;
 		padding-top:20%;
