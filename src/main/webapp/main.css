@@ -87,14 +87,6 @@ h1 {
         width: 90%;
 		padding-top:20%;
        }
-h1{
-	font-family: Arial;
-	font-size: 54px;
-	font-weight: 700;
-	font-style: italic;
-	color: #FFFFFF;
-	padding:20px;
-}
 	       
 .footer{
 	border:solid 2px gray;
@@ -227,6 +219,6 @@ label {
   clear: both;
 }
 p{
-    font-size: 24px;
+    font-size: 20px;
 }
 
