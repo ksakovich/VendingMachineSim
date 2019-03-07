@@ -161,26 +161,22 @@ td p {
 <div class="column middle">
   <center>
   <table style="width:50%">
-		
+
    <tbody>
-   
+
  <tr>
     <td>
-		<p>Quntity:{},price:{}$</p> <img src=".\image\lays-classic.png" alt="1"height=100 width=100 ><p>A1 
-		<input type="radio" name="A1" value="A1"></p>
+		<p>${theItem.itemName}: ${theItem.price}</p>
+                <img src=".\image\${theItem.image}" height=100 width=100><p>A1
+                
 	</td>
-    <td>
-		<p>Quntity:{},price:{}$</p> <img src=".\image\oreo.png" alt="2"height=100 width=100><p>A2 
-		<input type="radio" name="A2" value="A2"></p>
-	</td>
-    <td>
-		<p>Quntity:{},price:{}$</p><img src=".\image\Reeses.png" alt="3"height=100 width=100><p>A3 
-		<input type="radio" name="A3" value="A3"></p>
-	</td>
+   
+	
+
  </tr>
  <tr>
     <td>
-		<p>Quntity:{},price:{}$</p><img src=".\image\m&m.png" alt="4"height=100 width=100><p>B1 
+		<p>Quntity3:{},price:{}$</p><img src=".\image\m&m.png" alt="4"height=100 width=100><p>B1 
 		<input type="radio" name="B1" value="B1"></p>
 	</td>
     <td>

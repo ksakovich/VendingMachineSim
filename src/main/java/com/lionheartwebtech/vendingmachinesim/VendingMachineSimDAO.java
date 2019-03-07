@@ -23,7 +23,7 @@ public class VendingMachineSimDAO {
         } 
     }
     
-    protected  List <Item> getListOfItems()
+    public static  List <Item> getListOfItems()
     {
         return listOfItems;
     }

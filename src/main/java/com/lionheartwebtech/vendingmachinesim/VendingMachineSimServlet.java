@@ -1,3 +1,4 @@
+
 package com.lionheartwebtech.vendingmachinesim;
 
 import java.io.*;
@@ -107,7 +108,22 @@ public class VendingMachineSimServlet extends HttpServlet {
                 break;
                 
             case "simulation":
+               //List<Item> items = VendingMachineSimDAO.getListOfItems();
+                /*
+               int count = 0;
+               for(Item item : VendingMachineSimDAO.getListOfItems())
+               {
+               model.put("Quantity"+count, item.getQuantity());
+               model.put("Price"+count, item.getPrice());
+               count++;
+               }
+*/              int id = 1;
+                Item item = VendingMachineSimDAO.getItemwithId(jdbcConnection, id);
+                
+                //Item item = new Item("Chips", 1.00, 100);
+                model.put("theItem", item);
                 //TODO: add model
+                //model.put("ItemsList", VendingMachineSimDAO.getListOfItems());
                 template = "simulation.tpl";
                 break;
             case "replaceItem":
