@@ -5,10 +5,28 @@ package com.lionheartwebtech.vendingmachinesim;
 import java.sql.*;
 import java.util.*;
 import org.apache.log4j.Logger;
+import java.util.ArrayList;
 
 public class VendingMachineSimDAO {
     
     private static final Logger logger = Logger.getLogger(VendingMachineSimDAO.class.getName());
+    private static List <Item> listOfItems = new ArrayList<>();
+    private static void fillOutTheList(Connection conn)
+    {
+        String query = "SELECT * ID, ProductName,";
+        query += " FROM Items OREDER BY ID";
+        List<Map<String,String>> results = executeSQL(conn, query);
+//        int counter = 0;
+        for (Map<String,String> map : results){
+            Item item = resultsToItem(map);
+            listOfItems.add(item);
+        } 
+    }
+    
+    protected  List <Item> getListOfItems()
+    {
+        return listOfItems;
+    }
     
     public static Item getItemwithId (Connection conn, int id){
         String query = "SELECT ID, ProductName,";
