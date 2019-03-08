@@ -108,7 +108,7 @@ public class VendingMachineSimServlet extends HttpServlet {
                 break;
                 
             case "simulation":
-               //List<Item> items = VendingMachineSimDAO.getListOfItems();
+               
                 /*
                int count = 0;
                for(Item item : VendingMachineSimDAO.getListOfItems())
@@ -117,13 +117,10 @@ public class VendingMachineSimServlet extends HttpServlet {
                model.put("Price"+count, item.getPrice());
                count++;
                }
-*/              int id = 1;
-                Item item = VendingMachineSimDAO.getItemwithId(jdbcConnection, id);
+                */             
+                List<Item> items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                model.put("theItem", items);
                 
-                //Item item = new Item("Chips", 1.00, 100);
-                model.put("theItem", item);
-                //TODO: add model
-                //model.put("ItemsList", VendingMachineSimDAO.getListOfItems());
                 template = "simulation.tpl";
                 break;
             case "replaceItem":
