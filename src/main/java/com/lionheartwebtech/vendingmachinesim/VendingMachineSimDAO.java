@@ -13,8 +13,7 @@ public class VendingMachineSimDAO {
     private static List <Item> listOfItems = new ArrayList<>();
     private static void fillOutTheList(Connection conn)
     {
-        String query = "SELECT * ID, ProductName,";
-        query += " FROM Items OREDER BY ID";
+        String query = "SELECT * FROM Items ORDER BY ID";
         List<Map<String,String>> results = executeSQL(conn, query);
 //        int counter = 0;
         for (Map<String,String> map : results){
