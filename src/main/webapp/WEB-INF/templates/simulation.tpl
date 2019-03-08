@@ -163,11 +163,20 @@ td p {
   <table style="width:50%">
 
    <tbody>
-
+<#list theItem as item>
+<tr>
+<td>
+<p>Quantity: ${item.quantity}</p>
+<p>Name: ${item.itemName}</p>
+<p><img src=".\image\${item.image}" height=100 width=100></p>
+<p>Price: ${item.price}</p>
+</td>
+</tr>
+</#list>
  <tr>
     <td>
-		<p>${theItem.itemName}: ${theItem.price}</p>
-                <img src=".\image\${theItem.image}" height=100 width=100><p>A1
+		<!-- <p>${theItem.itemName}: ${theItem.price}</p> -->
+                <!-- <img src=".\image\${theItem.image}" height=100 width=100><p>A1 -->
                 
 	</td>
    
