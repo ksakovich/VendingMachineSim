@@ -4,13 +4,8 @@
         <title>Replace Item</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            input[readonly] {
-                background-color:lightGray;
-            }
-        </style>
-    </head>
-		 <style>
+<style>
+
 h1 {
         width: 800px;
 		height: 30px;
@@ -102,8 +97,6 @@ body {
 	width: 560px;
 }
 
-#social_links { float: right; margin: 10px 15px 5px 0 }
-#social_links a { display: inline-block; margin-left: 20px }
 
 
 
@@ -249,7 +242,8 @@ a.follow_us { color: #30aede }
 	border: 1px solid #999;
 	margin-top: 10px;
 }
-</style>
+    </style>
+</head>
 
     <body>
 	 <div id="body_wrapper">
@@ -261,20 +255,15 @@ a.follow_us { color: #30aede }
         
         <div id="header">
             <div id="site_title">
-        <h1> Lion's Heart Vendidng Machine </h1>
+        <h1> Lion's Heart Vending Machine </h1>
 		  </div>
             <div id="header_right">
-                <div id="social_links">
-                    <a href="https://login.yahoo.com/"><img src="image/mail.png" alt="Contact" /></a>
-                    <a href="https://www.facebook.com/"><img src="image/facebook.png" alt="Facebook" /></a>
-                    <a href="https://twitter.com/"><img src="image/twitter_01.png" alt="Twitter" /></a>              
-                </div>
                 <div id="menu">
                     <ul>
                         <li><a href="./sim?cmd=home">Home</a></li>
                         <li><a href ="questions.html">Questions</a> </li>
                         <li><a href="contact.html">Contact</a></li>
-						  <li><a href="video.html" class="current">Video</a></li>
+			<li><a href="video.html" class="current">Video</a></li>
                     </ul>    	
                 </div> 
             </div>

@@ -120,11 +120,6 @@ body {
 	float: right;
 	width: 560px;
 }
-
-#social_links { float: right; margin: 10px 15px 5px 0 }
-#social_links a { display: inline-block; margin-left: 20px }
-
-
 #menu {
 	clear: both;
 	float: right;
@@ -227,14 +222,10 @@ a.follow_us { color: #30aede }
         
         <div id="header">
             <div id="site_title">
-        <h1> Lion's Heart Vendidng Machine </h1>
+        <h1> Lion's Heart Vending Machine </h1>
 		  </div>
             <div id="header_right">
-               <div id="social_links">
-                    <a href="https://login.yahoo.com/"><img src="image/mail.png" alt="Contact" /></a>
-                    <a href="https://www.facebook.com/"><img src="image/facebook.png" alt="Facebook" /></a>
-                    <a href="https://twitter.com/"><img src="image/twitter_01.png" alt="Twitter" /></a>              
-                </div>
+               
                 <div id="menu">
                     <ul>
                         <li><a href="./sim?cmd=home">Home</a></li>
