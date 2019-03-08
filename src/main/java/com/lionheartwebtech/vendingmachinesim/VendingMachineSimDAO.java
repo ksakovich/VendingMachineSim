@@ -11,21 +11,26 @@ public class VendingMachineSimDAO {
     
     private static final Logger logger = Logger.getLogger(VendingMachineSimDAO.class.getName());
     private static List <Item> listOfItems = new ArrayList<>();
-    private static void fillOutTheList(Connection conn)
+    
+    public static List <Item> getListOfItems(Connection conn)
     {
+        
         String query = "SELECT * FROM Items ORDER BY ID";
+        logger.debug("Executing SQL Query: " + query);
         List<Map<String,String>> results = executeSQL(conn, query);
-//        int counter = 0;
+
         for (Map<String,String> map : results){
             Item item = resultsToItem(map);
             listOfItems.add(item);
         } 
-    }
-    
-    public static  List <Item> getListOfItems()
-    {
         return listOfItems;
     }
+    
+//    public static  List <Item> getListOfItems()
+//    {
+//        
+//        return listOfItems;
+//    }
     
     public static Item getItemwithId (Connection conn, int id){
         String query = "SELECT ID, ProductName,";
