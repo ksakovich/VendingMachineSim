@@ -327,6 +327,8 @@ td p {
 
 <tr>
     <td>
+
+    
         <p>Quantity: ${item.quantity}</p>
         <p>Name: ${item.itemName}</p>
         <p><img src=".\image\${item.image}" height=100 width=100></p>
@@ -380,7 +382,7 @@ td p {
 </div>
     <div class="sidebar">
 	     
-        <a href="./sim?cmd=reset" class="button button1">Reset Item</a> 
+        <a href="./sim?cmd=resetItem" class="button button1">Reset Item</a> 
 		<br>
         <a href="./sim?cmd=replaceItem" class="button button2">Replace Item</a> 
 		<br>
