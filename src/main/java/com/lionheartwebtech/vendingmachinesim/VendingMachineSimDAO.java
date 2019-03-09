@@ -16,7 +16,6 @@ public class VendingMachineSimDAO {
     {
         
         String query = "SELECT * FROM Items ORDER BY ID";
-        logger.debug("Executing SQL Query: " + query);
         List<Map<String,String>> results = executeSQL(conn, query);
 
         for (Map<String,String> map : results){

@@ -20,6 +20,7 @@ public class VendingMachineSimServlet extends HttpServlet {
     private static Connection jdbcConnection = null;
     private static Configuration fmConfig = new Configuration(Configuration.getVersion());
     private static final String TEMPLATE_DIR = "/WEB-INF/templates";
+    private static List<Item> items;
     
     @Override
     public void init(ServletConfig config) throws UnavailableException {
@@ -100,6 +101,7 @@ public class VendingMachineSimServlet extends HttpServlet {
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
+        
         //TODO: Switch for templates
         if(command != null){
         switch (command) {
@@ -108,7 +110,7 @@ public class VendingMachineSimServlet extends HttpServlet {
                 break;
                 
             case "simulation":
-               
+               items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
                 /*
                int count = 0;
                for(Item item : VendingMachineSimDAO.getListOfItems())
@@ -118,21 +120,35 @@ public class VendingMachineSimServlet extends HttpServlet {
                count++;
                }
                 */             
-                List<Item> items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+               
                 model.put("theItem", items);
                 
                 template = "simulation.tpl";
                 break;
             case "replaceItem":
+               
                 //TODO: add model
                 template = "replaceItem.tpl";
-                break;    
-            case "reset":
-                //TODO: add method
+                break;   
+            case "resetItem":
+                
+                template = "simulation.tpl";
+                break;   
+            case "resetAll":
+                //TODO: find another way to reset all
+                for(Item item: items){
+                VendingMachineSimDAO.resetSpecificItem(jdbcConnection, item.getId());
+                }   
+               
+               
+               
+               
+                model.put("theItem", items);
                 template = "simulation.tpl";
                 break;  
             case "buy":
                 //TODO: add method
+               
                 template = "simulation.tpl";
                 break;  
                 
