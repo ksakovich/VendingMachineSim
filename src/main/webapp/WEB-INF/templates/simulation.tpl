@@ -320,65 +320,40 @@ td p {
 <h1> Vending Machine Demo</h1>
 	<div class="col_large float_l">
 <!--------------------------------------------------------------------------------------------->
-  <table style="width:70%">
+  <#list theItem>
+            <table style="width:70%">
+               <tr>
+               <#assign x = 0>
+               <#assign charCounter = 1>
+                <#assign char = 'A'>
+                <#items as oneItem> 
+                
+                  <td>${oneItem}
+                        <p>${oneItem.itemName}</p>
+                        <p>Quantity: ${oneItem.quantity}</p>
+                        <img src=".\image\${oneItem.image}" height=100 width=100>
+                        <p>$ ${oneItem.price}</p>
+                        <p>${char}${charCounter}</p>
+                        <center>
+                            <input type="radio" name= ${char}${charCounter} value=${char}${charCounter}">
+                        </center>
+                  </td>
+                <#if (x == 2)>
+                <#assign char = 'B'>
+                <#assign charCounter = 0>
+                   <tr>
+                 </#if>
 
-   <tbody>
-<#list theItem as item>
-
-<tr>
-    <td>
-
-    
-        <p>Quantity: ${item.quantity}</p>
-        <p>Name: ${item.itemName}</p>
-        <p><img src=".\image\${item.image}" height=100 width=100></p>
-        <p>Price: ${item.price}</p>
-        <p><input type="radio" id="1" value=""></p>
-    </td>
-</tr>
-
-<!---
- <tr>
-    <td>
-        <p>${item.itemName}: ${item.price}</p> 
-         <img src=".\image\${item.image}" height=100 width=100><p>A1               
-    </td>
- </tr>
---->
-
-</#list>
-<!-----------------------------------------------------
- <tr>
-    <td>
-		<p>Quntity3:{},price:{}$</p><img src=".\image\m&m.png" alt="4"height=100 width=100><p>B1 
-		<input type="radio" name="B1" value="B1"></p>
-	</td>
-    <td>
-		<p>Quntity:{},price:{}$</p><img src=".\image\preztle.png" alt="5"height=100 width=100 ><p>B2 
-		<input type="radio" name="B2" value="B2"></p>
-	</td>
-    <td>
-		<p>Quntity:{},price:{}$</p><img src=".\image\kitkat.png" alt="6"height=100 width=100><p>B3
-		<input type="radio" name="B3" value="B3"></p>
-	</td>
- </tr>
-  <tr>
-    <td>
-		<p>Quntity:{},price:{}$</p><img src=".\image\doritos.png" alt="7"height=100 width=100><p>C1 
-		<input type="radio" name="C1" value="C1"></p>
-	</td>
-    <td>
-		<p>Quntity:{},price:{}$</p><img src=".\image\cheetos.png" alt="8"height=100 width=100><p>C2 
-		<input type="radio" name="C2" value="C2"></p>
-		</td>
-    <td>
-	<p>Quntity:{},price:{}$</p><img src=".\image\chexmix.png" alt="9"height=100 width=100><p>C3 
-	<input type="radio" name="C3" value="C3"></p>
-	</td>
-  </tr>
- -------------------------------------------------->
- </tbody>
-</table>
+                  <#if (x == 5)>
+                   <#assign charCounter = 0>
+                   <#assign char = 'C'>
+                   <tr>
+                 </#if>
+                 <#assign x++>
+                 <#assign charCounter++>
+              </#items>
+            </table>
+          </#list>
 </div>
     <div class="sidebar">
 	     
