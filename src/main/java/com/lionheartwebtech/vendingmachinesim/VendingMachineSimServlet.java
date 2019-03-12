@@ -63,7 +63,7 @@ public class VendingMachineSimServlet extends HttpServlet {
             logger.error("Unable to connect to SQL Database with JDBC string: " + connString);
             throw new UnavailableException("Unable to connect to database.");
         }
-        items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+        
         logger.info("...connected!");
         
         logger.info("==============================");
@@ -109,6 +109,7 @@ public class VendingMachineSimServlet extends HttpServlet {
                 break;
                 
             case "simulation":
+                items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
                //items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
                 /*
                int count = 0;
@@ -167,7 +168,6 @@ public class VendingMachineSimServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long timeStart = System.currentTimeMillis();
         logger.debug("IN - doPost()");
-
         String command = request.getParameter("cmd");
         if (command == null) {
             logger.info("No cmd parameter received");
