@@ -175,14 +175,16 @@ width: 180px;
 	border-bottom: 1px solid #666;
 	margin-bottom: 25px;
 }
-.col_w280 {
+.col_l{
 	float: left;
-	margin-right: 40px;
-	width: 280px;
+	margin: 40px;
+	width: 350px;
 }
-
-a.follow_us { color: #30aede }
-
+.col_r {
+	float: right;
+	margin: 40px;
+	width: 350px;
+}
 .rmb { margin: 0}
 
 .container:after {
@@ -372,21 +374,16 @@ td p {
                 <div class="cleaner"></div>
                 <div class="cleaner"></div>
          
- <div id="main_bottom"></div>
+<div id="main_bottom"></div>
         
-        <div id="bottom">
-        	<div class="col_w280">
-            	<h4 class="twitter">Twitter</h4>
-                <p>Duis aute irure dolor in reprehes nerit in voluptate velit esse cillum dolo rsee.</p>
-                <p>In risus sapien, pretium et hendrerit quis, facilisis nec massa. Quisque eros sem, consequat.</p>
-                <a href="#" class="float_r follow_us">Follow</a>
-            </div>
-            <div class="col_w280">
+         <div id="bottom">
+        	
+            <div class="col_l ">
             	<h4>Recent Work</h4>
                 <img class="imger_box" src="image/image_10.jpg" alt="Image 10" />
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-          <div class="col_w280 rmb">
+          <div class="col_r ">
             	<h4>Company Address</h4>
                 <strong>Lion Heart's Vending</strong><br />
                 11111 ABCD St, <br />
@@ -396,9 +393,7 @@ td p {
 			</div>
             <div class="cleaner"></div>
         </div>
-    </div> <!--end warpper-->
- 
-	 
+    </div>
 <div id="footer_wrapper">
         <div id="footer">
             

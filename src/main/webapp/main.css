@@ -275,3 +275,13 @@ a.follow_us { color: #30aede }
 	margin-top: 10px;
 }
 
+.col_l{
+	float: left;
+	margin: 40px;
+	width: 350px;
+}
+.col_r {
+	float: right;
+	margin: 40px;
+	width: 350px;
+}
