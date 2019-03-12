@@ -154,14 +154,14 @@ width: 180px;
 	clear: both;
 	width: 920px;
 	padding: 30px 20px 0;
-	background: url(image/main.jpg) repeat-y
+	
 }
 #main p {
 	font-family: Tahoma, Geneva, sans-serif;
 	font-size: 20px;
 	
 }
-#main_bottom { width: 960px; height: 10px; background: url(image/main_bottom.png) no-repeat }
+#main_bottom { width: 960px; height: 10px; }
 #bottom {
 	clear: both;
 	width: 920px;

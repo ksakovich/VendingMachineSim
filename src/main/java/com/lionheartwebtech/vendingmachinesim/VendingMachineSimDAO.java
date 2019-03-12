@@ -14,24 +14,23 @@ public class VendingMachineSimDAO {
     
     public static List <Item> getListOfItems(Connection conn)
     {
-        
+        logger.info("you are in the getLisOfItems method");
+        if(listOfItems != null);{
+            listOfItems.clear();
+        }
         String query = "SELECT * FROM Items ORDER BY ID";
         List<Map<String,String>> results = executeSQL(conn, query);
 
         for (Map<String,String> map : results){
             Item item = resultsToItem(map);
             listOfItems.add(item);
-        } 
+            }    
         return listOfItems;
     }
+
     
-//    public static  List <Item> getListOfItems()
-//    {
-//        
-//        return listOfItems;
-//    }
-    
-    public static Item getItemwithId (Connection conn, int id){
+    public static Item getItemWithId (Connection conn, int id){
+        logger.info("you are in the getItemWtihId method");
         String query = "SELECT ID, ProductName,";
         query += " Quantity, Price, Calories, Image";
         query += " FROM Items WHERE ID=?";
@@ -42,6 +41,7 @@ public class VendingMachineSimDAO {
     }
     
     public static int getItemQuantity (Connection conn, int id){
+        logger.info("you are in the getItemQuantity method");
         String query = "SELECT Quantity FROM Items WHERE ID=?";
         List<Map<String,String>> results = executeSQL(conn, query, ""+id);
         Item requestedItem = resultsToItem(results.get(0));
@@ -50,6 +50,7 @@ public class VendingMachineSimDAO {
     
     //please review the update statment 
     public static void buyItem (Connection conn, int id, int amount){
+        logger.info("you are in the buyItem method");
         String query = "SELECT Quantity FROM Items WHERE ID=?";
         List<Map<String,String>> results = executeSQL(conn, query, ""+id);
         int quantity = Integer.parseInt(results.get(0).get("Quantity"));
@@ -61,6 +62,7 @@ public class VendingMachineSimDAO {
     
     //please review this method
     public static void updateItem (Connection conn, int id, String productName, int quantity, double price, int calories, String image){
+        logger.info("you are in the updateItem method");
         String query = "Update Items SET";
         query += " (ProductName, Quantity, Price, Calories, Image) = (?, ?, ?, ?, ?) WHERE ID=?";
         executeSQLUpdateItems(conn, query, productName, ""+quantity, ""+price, ""+calories, image, ""+id);
@@ -68,11 +70,13 @@ public class VendingMachineSimDAO {
     
     //please review the SQL syntax
     public static void resetItems (Connection conn){
+        logger.info("you are in the resetItems method");
         String query = "UPDATE Items SET Quantity = 10 WHERE ID IN ('1','2','3','4','5','6','7','8','9')";
         executeSQLUpdateItems(conn, query);
     }
     
     public static void resetSpecificItem (Connection conn, int id){
+        logger.info("you are in the resetSpecificItem method");
        String query = "UPDATE Items SET Quantity = 10 WHERE ID=?";
        executeSQLUpdateItems(conn, query, ""+id);
     }
@@ -148,6 +152,7 @@ public class VendingMachineSimDAO {
     }
       
     private static Item resultsToItem(Map <String,String> row){
+        logger.info("you are in the resultsToItems method");
         int id = Integer.parseInt(row.get("ID"));
         String productName = row.get("ProductName");
         int quantity = Integer.parseInt(row.get("Quantity"));

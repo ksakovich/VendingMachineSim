@@ -94,8 +94,7 @@ public class VendingMachineSimServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long timeStart = System.currentTimeMillis();
-        logger.debug("IN - doGet()");
-        List<Item> itemList = items;       
+        logger.debug("IN - doGet()");      
         String command = request.getParameter("cmd");
         if (command == null) command = "home";
 
@@ -121,7 +120,7 @@ public class VendingMachineSimServlet extends HttpServlet {
                }
                 */             
                
-                model.put("theItem", itemList);
+                model.put("theItem", items);
                 
                 template = "simulation.tpl";
                 break;
@@ -135,11 +134,10 @@ public class VendingMachineSimServlet extends HttpServlet {
                 template = "simulation.tpl";
                 break;   
             case "resetAll":
-                //TODO: find another way to reset all
-                for(Item item: items){
-                VendingMachineSimDAO.resetSpecificItem(jdbcConnection, item.getId());
-                }   
-               
+                
+                VendingMachineSimDAO.resetItems(jdbcConnection);
+                items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+             
                
                
                
@@ -183,7 +181,7 @@ public class VendingMachineSimServlet extends HttpServlet {
             case "replaceItem":
                 template = "replaceItem.tpl";
 //                int itemID = 0;
-//                model.put("sim", VendingMachineSimDAO.getItemwithId(jdbcConnection, itemID));
+//                model.put("sim", VendingMachineSimDAO.getItemWithId(jdbcConnection, itemID));
                        
                 
                 break;
