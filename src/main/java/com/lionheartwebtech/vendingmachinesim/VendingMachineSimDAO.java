@@ -71,7 +71,7 @@ public class VendingMachineSimDAO {
     //please review the SQL syntax
     public static void resetItems (Connection conn){
         logger.info("you are in the resetItems method");
-        String query = "UPDATE Items SET Quantity = 10 WHERE ID IN ('1','2','3','4','5','6','7','8','9')";
+        String query = "UPDATE Items SET Quantity = 9999 WHERE ID IN ('1','2','3','4','5','6','7','8','9')";
         executeSQLUpdateItems(conn, query);
     }
     
