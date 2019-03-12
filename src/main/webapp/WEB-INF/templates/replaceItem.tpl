@@ -244,6 +244,11 @@ body {
 	border: 1px solid #999;
 	margin-top: 10px;
 }
+.alert {
+  padding: 20px;
+  color: red;
+}
+
     </style>
 </head>
 
@@ -273,8 +278,19 @@ body {
         </div> 
         
         <div id="main">
+<h1> Replace Item</h1>
+<!-------------Warnning Message----------->
+<div class="alert">
+    <center>
+        <p>
+        KIRILLLLL!!!!!
+       ${warningMessage}
+        </p>
+    </center>
+</div>
+
 		<div class="col_large float_r">
-		<h1> Replace Item</h1>
+		
 		  <div id="contact_form">
                
         <form action="sim?action=update" method="post">

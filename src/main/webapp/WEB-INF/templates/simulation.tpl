@@ -289,7 +289,12 @@ td {
 td p {
   text-align: center;
 }      
-   
+ .alert {
+  padding: 20px;
+  color: red;
+}
+
+  
 </style>
 
 <body>
@@ -320,10 +325,20 @@ td p {
 <div id="main">
 		
 <h1> Vending Machine Demo</h1>
-	<div class="col_large float_l">
-<!--------------------------------------------------------------------------------------------->
+<!-------------Warnning Message----------->
+<div class="alert">
+    <center>
+        <p>
+        KIRILLLLL!!!!!
+       ${warningMessage}
+        </p>
+    </center>
+</div>
+
+<div class="col_large float_l">
+<!-----------------------------------Table-------------------------------------------------->
   <#list theItem>
-            <table style="width:70%">
+            <table style="width:100%">
                <tr>
                <#assign x = 0>
                <#assign charCounter = 1>
@@ -357,20 +372,22 @@ td p {
             </table>
           </#list>
 </div>
+<!--------------------------------Buttons------------------------>
     <div class="sidebar">
 	     
         <a href="./sim?cmd=resetItem" class="button button1">Reset Item</a> 
-		<br>
+		<br><br>
         <a href="./sim?cmd=replaceItem" class="button button2">Replace Item</a> 
-		<br>
+		<br><br>
 	<a href="./sim?cmd=buy" class="button button3"> Buy Item</a> 
-		<br>
+		<br><br>
 	<a href="./sim?cmd=resetAll" class="button button1">Reset All</a>
-                <br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br>
 	<a href="thankyou.html" class="button button4">Exit</a> 
     </div>
 		
 </div> <!--end main-->
+
                 <div class="cleaner"></div>
                 <div class="cleaner"></div>
          
