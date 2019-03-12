@@ -335,7 +335,7 @@ td p {
                         <p>$ ${oneItem.price}</p>
                         <p>${char}${charCounter}</p>
                         <center>
-                            <input type="radio" name= ${char}${charCounter} value=${char}${charCounter}">
+                            <input type="radio" name="item" id= ${char}${charCounter} value=${char}${charCounter}">
                         </center>
                   </td>
                 <#if (x == 2)>
