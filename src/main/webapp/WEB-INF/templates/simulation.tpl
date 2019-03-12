@@ -325,20 +325,23 @@ td p {
 <div id="main">
 		
 <h1> Vending Machine Demo</h1>
-<!-------------Warnning Message----------->
+<!-------------Warning Message----------->
+<#if theItem ??>
 <div class="alert">
+
     <center>
         <p>
-        KIRILLLLL!!!!!
-       ${warningMessage}
+         KIRILLLLL!!!!!
+     <!-- ${warningMessage}-->
         </p>
     </center>
-</div>
 
+</div>
+</#if>
 <div class="col_large float_l">
 <!-----------------------------------Table-------------------------------------------------->
   <#list theItem>
-            <table style="width:100%">
+            <table style="width:80%">
                <tr>
                <#assign x = 0>
                <#assign charCounter = 1>

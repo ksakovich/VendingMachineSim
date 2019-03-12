@@ -279,15 +279,19 @@ body {
         
         <div id="main">
 <h1> Replace Item</h1>
-<!-------------Warnning Message----------->
+<!-------------Warning Message----------->
+<#if theItem ??>
 <div class="alert">
+
     <center>
         <p>
-        KIRILLLLL!!!!!
-       ${warningMessage}
+         KIRILLLLL!!!!!
+     <-- ${warningMessage}-->
         </p>
     </center>
+
 </div>
+</#if>
 
 		<div class="col_large float_r">
 		
