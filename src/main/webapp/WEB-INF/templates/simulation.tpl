@@ -331,8 +331,7 @@ td p {
 
     <center>
         <p>
-         KIRILLLLL!!!!!
-     <!-- ${warningMessage}-->
+     ${warningMessage}
         </p>
     </center>
 
