@@ -325,6 +325,7 @@ td p {
 <div id="main">
 		
 <h1> Vending Machine Demo</h1>
+ 
 <!-------------Warning Message----------->
 <#if theItem ??>
 <div class="alert">
@@ -339,7 +340,8 @@ td p {
 </#if>
 <div class="col_large float_l">
 <!-----------------------------------Table-------------------------------------------------->
-  <#list theItem>
+
+  <#list itemsList>
             <table style="width:80%">
                <tr>
                <#assign x = 0>
@@ -354,7 +356,7 @@ td p {
                         <p>$ ${oneItem.price}</p>
                         <p>${char}${charCounter}</p>
                         <center>
-                            <input type="radio" name="item" id= ${char}${charCounter} value=${char}${charCounter}">
+                            <input type="radio" name="radioItem"  value=${oneItem.itemName}">
                         </center>
                   </td>
                 <#if (x == 2)>
@@ -373,15 +375,16 @@ td p {
               </#items>
             </table>
           </#list>
+
 </div>
 <!--------------------------------Buttons------------------------>
     <div class="sidebar">
-	     
-        <a href="./sim?cmd=resetItem" class="button button1">Reset Item</a> 
+	    
+        <a href="./sim?cmd=resetItem" class="button button1" type = "submit" value="Submit">Reset Item</a> 
 		<br><br>
         <a href="./sim?cmd=replaceItem" class="button button2">Replace Item</a> 
 		<br><br>
-	<a href="./sim?cmd=buy" class="button button3"> Buy Item</a> 
+	<a href="./sim?cmd=buy" class="button button3" > Buy Item</a> 
 		<br><br>
 	<a href="./sim?cmd=resetAll" class="button button1">Reset All</a>
                 <br><br><br><br><br><br><br><br><br><br><br>
