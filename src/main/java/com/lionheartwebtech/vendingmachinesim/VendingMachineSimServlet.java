@@ -123,12 +123,12 @@ public class VendingMachineSimServlet extends HttpServlet {
                 */             
                errorMessage = "Warning: This message is shown for testing purposes";
                model.put("warningMessage", errorMessage);
+               
                 model.put("theItem", items);
                 
                 template = "simulation.tpl";
                 break;
             case "replaceItem":
-               
                 //TODO: add model
                 template = "replaceItem.tpl";
                 break;   
@@ -137,7 +137,8 @@ public class VendingMachineSimServlet extends HttpServlet {
                 template = "simulation.tpl";
                 break;   
             case "resetAll":
-                
+                errorMessage = "";
+                model.put("warningMessage", errorMessage);
                 VendingMachineSimDAO.resetItems(jdbcConnection);
                 items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
              
