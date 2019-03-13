@@ -20,7 +20,7 @@ public class VendingMachineSimServlet extends HttpServlet {
     private static Connection jdbcConnection = null;
     private static Configuration fmConfig = new Configuration(Configuration.getVersion());
     private static final String TEMPLATE_DIR = "/WEB-INF/templates";
-    private static List<Item> items;
+    private static List<Item> itemsList;
     private static String errorMessage = "";
     
     @Override
@@ -110,7 +110,7 @@ public class VendingMachineSimServlet extends HttpServlet {
                 break;
                 
             case "simulation":
-                items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
                //items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
                 /*
                int count = 0;
@@ -124,28 +124,38 @@ public class VendingMachineSimServlet extends HttpServlet {
                errorMessage = "Warning: This message is shown for testing purposes";
                model.put("warningMessage", errorMessage);
                
-                model.put("theItem", items);
+                model.put("itemsList", itemsList);
                 
                 template = "simulation.tpl";
                 break;
             case "replaceItem":
                 //TODO: add model
+                
                 template = "replaceItem.tpl";
                 break;   
             case "resetItem":
                 
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+            errorMessage = "";
+             model.put("warningMessage", errorMessage);
+               String radio = request.getParameter("radioItem");
+               
+               logger.info("Getting radioButton Name: " +radio);
+                
+                model.put("itemsList", itemsList);
+                //doPost(request, response);
                 template = "simulation.tpl";
                 break;   
             case "resetAll":
                 errorMessage = "";
                 model.put("warningMessage", errorMessage);
                 VendingMachineSimDAO.resetItems(jdbcConnection);
-                items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
              
                
                
                
-                model.put("theItem", items);
+                model.put("theItem", itemsList);
                 template = "simulation.tpl";
                 break;  
             case "buy":
@@ -181,15 +191,24 @@ public class VendingMachineSimServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         switch (command) {
+            case "resetItem":
+//                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+//               errorMessage = "";
+//                model.put("warningMessage", errorMessage);
+//               //String radio = request.getParameter("radioItem");
+//               String radio = request.getParameter("radioItem");
+//                
+//                logger.info("Getting radioButton Name: " +radio);
+//               
+//                model.put("itemsList", itemsList);
+//                
+//               template = "simulation.tpl";
+                break; 
             case "replaceItem":
                 template = "replaceItem.tpl";
-//                int itemID = 0;
-//                model.put("sim", VendingMachineSimDAO.getItemWithId(jdbcConnection, itemID));
-                       
-                
-                break;
+               break;
             case "buy":
-                template = "replaceItem.tpl";
+                
 //        
                 break;
                 
