@@ -21,6 +21,7 @@ public class VendingMachineSimServlet extends HttpServlet {
     private static Configuration fmConfig = new Configuration(Configuration.getVersion());
     private static final String TEMPLATE_DIR = "/WEB-INF/templates";
     private static List<Item> items;
+    private static String errorMessage = "";
     
     @Override
     public void init(ServletConfig config) throws UnavailableException {
@@ -120,7 +121,8 @@ public class VendingMachineSimServlet extends HttpServlet {
                count++;
                }
                 */             
-               
+               errorMessage = "Warning: This message is shown for testing purposes";
+               model.put("warningMessage", errorMessage);
                 model.put("theItem", items);
                 
                 template = "simulation.tpl";
