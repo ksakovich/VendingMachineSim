@@ -347,7 +347,7 @@ td p {
                 <#assign char = 'A'>
                 <#items as oneItem> 
                 
-                  <td>${oneItem}
+                  <td>
                         <p>${oneItem.itemName}</p>
                         <p>Quantity: ${oneItem.quantity}</p>
                         <p><img src=".\image\${oneItem.image}" height=100 width=100></p>
@@ -382,7 +382,7 @@ td p {
 		<br><br>
         <a href="./sim?cmd=replaceItem" class="button button2" type = "submit" value="Submit">Replace Item</a> 
 		<br><br>
-	<a href="./sim?cmd=buy" class="button button3" type = "submit" value="Submit"> Buy Item</a> 
+	<a href="./sim?cmd=simulation" class="button button3" type = "submit" value="Submit"> Buy Item</a> 
 		<br><br>
 	<a href="./sim?cmd=resetAll" class="button button1" type = "submit" value="Submit">Reset All</a>
                 <br><br><br><br><br><br><br><br><br><br><br>
