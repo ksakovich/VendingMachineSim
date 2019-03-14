@@ -78,7 +78,7 @@ body {
 #top {
 	padding: 10px;
 }
-#searchbutton { height: 25px; width: 60px; padding: 0; margin: 0; cursor: pointer; background: none; border: none; }
+
 
 #header {
 	clear: both;

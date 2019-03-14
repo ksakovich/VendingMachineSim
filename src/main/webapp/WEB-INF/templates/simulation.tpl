@@ -129,15 +129,15 @@ width: 180px;
     clear: both;
     width: 920px;
     padding: 30px 20px 0;
-    
+    background: url(image/main.jpg) repeat-y
 }
 #main p {
     font-family: Tahoma, Geneva, sans-serif;
         margin: 0;
     font-size: 15px;
-    
+   
 }
-#main_bottom { width: 960px; height: 10px; }
+#main_bottom { width: 960px; height: 10px;background: url(image/main_bottom.png) no-repeat }
 #bottom {
     clear: both;
     width: 920px;
@@ -332,15 +332,16 @@ td p {
 </div>
 <!--------------------------------Buttons------------------------>
     <div class="sidebar">
-    <input type="submit" formaction ="./sim?cmd=addList" value="Reset Item" />    
-       <!-- <a href="./sim?cmd=resetItem" class="button button1" type = "submit" value="Submit">Reset Item</a> -->
+    <input type="submit"class="button button1 formaction ="./sim?cmd=addList" value="Reset Item" />    
         <br><br>
-        <a href="./sim?cmd=replaceItem" class="button button2" type = "submit" value="Submit">Replace Item</a> 
+
+    <a href="./sim?cmd=replaceItem" class="button button2" type = "submit" value="Submit">Replace Item</a> 
         <br><br>
     
-    <a href="./sim?cmd=simulation" class="button button3" type = "submit" value="Submit"> Buy Item</a> 
+     <input class="button button3" type = "submit" value="Buy Item">
         <br><br>
-    <a href="./sim?cmd=resetAll" class="button button1" type = "submit" value="Submit">Reset All</a>
+
+     <input class="button button1" type = "submit" value="Reset All">
                 <br><br><br><br><br><br><br><br><br><br><br>
     <a href="thankyou.html" class="button button4">Exit</a> 
     </div>
