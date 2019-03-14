@@ -147,15 +147,17 @@ public class VendingMachineSimServlet extends HttpServlet {
                 template = "simulation.tpl";
                 break;   
             case "resetAll":
+                
                 errorMessage = "";
                 model.put("warningMessage", errorMessage);
+                
                 VendingMachineSimDAO.resetItems(jdbcConnection);
                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
              
                
                
                
-                model.put("theItem", itemsList);
+                model.put("itemsList", itemsList);
                 template = "simulation.tpl";
                 break;  
             case "buy":
