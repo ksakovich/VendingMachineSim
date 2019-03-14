@@ -138,9 +138,9 @@ public class VendingMachineSimServlet extends HttpServlet {
                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
             errorMessage = "";
              model.put("warningMessage", errorMessage);
-               String radio = request.getParameter("radioItem");
+               String radio = getRadioParameter(request);
                
-               logger.info("Getting radioButton Name: " +radio);
+              // logger.info("Getting radioButton Name: " +radio);
                 
                 model.put("itemsList", itemsList);
                 //doPost(request, response);
@@ -242,7 +242,13 @@ private void processTemplate(HttpServletResponse response, String template, Map<
             logger.error("IO Error:", e);
         } 
     }
-   
+   private String getRadioParameter(HttpServletRequest request){
+       String radio = request.getParameter("radioItem");
+               
+               logger.info("Getting radioButton Name: " +radio);
+               
+               return radio;
+   }
     
     
     @Override
