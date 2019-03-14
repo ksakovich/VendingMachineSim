@@ -311,7 +311,7 @@ td p {
                         <p>$ ${oneItem.price}</p>
                         <p>${char}${charCounter}</p>
                         <center>
-                            <input type="radio" name="radioItem"  value=${oneItem.itemName}">
+                            <input type="radio" name="radioItem"  value=${oneItem.itemName}>
                         </center>
                   </td>
                 <#if (x == 2)>
@@ -332,16 +332,16 @@ td p {
 </div>
 <!--------------------------------Buttons------------------------>
     <div class="sidebar">
-    <input type="submit"class="button button1 formaction ="./sim?cmd=addList" value="Reset Item" />    
+    <input type="submit" class="button button1" formaction ="./sim?cmd=resetItem" value="Reset Item" />    
         <br><br>
 
     <a href="./sim?cmd=replaceItem" class="button button2" type = "submit" value="Submit">Replace Item</a> 
         <br><br>
     
-     <input class="button button3" type = "submit" value="Buy Item">
+     <input type = "submit" class="button button3"  formaction ="./sim?cmd=buy" value="Buy Item">
         <br><br>
-
-     <input class="button button1" type = "submit" value="Reset All">
+     <a href="./sim?cmd=resetAll" class="button button1" type = "submit" value="Submit">Reset All</a> 
+     
                 <br><br><br><br><br><br><br><br><br><br><br>
     <a href="thankyou.html" class="button button4">Exit</a> 
     </div>

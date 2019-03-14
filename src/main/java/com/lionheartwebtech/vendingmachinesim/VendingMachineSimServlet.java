@@ -109,21 +109,12 @@ public class VendingMachineSimServlet extends HttpServlet {
                 break;
                 
             case "simulation":
-                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-               //items = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-                /*
-               int count = 0;
-               for(Item item : VendingMachineSimDAO.getListOfItems())
-               {
-               model.put("Quantity"+count, item.getQuantity());
-               model.put("Price"+count, item.getPrice());
-               count++;
-               }
-                */             
+               itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                  
                errorMessage = "Warning: This message is shown for testing purposes";
                model.put("warningMessage", errorMessage);
                
-                model.put("itemsList", itemsList);
+               model.put("itemsList", itemsList);
                 
                 template = "simulation.tpl";
                 break;
@@ -133,17 +124,11 @@ public class VendingMachineSimServlet extends HttpServlet {
                 template = "replaceItem.tpl";
                 break;   
             case "resetItem":
-                
-                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-            errorMessage = "";
-             model.put("warningMessage", errorMessage);
-               String radio = getRadioParameter(request);
-               
-              // logger.info("Getting radioButton Name: " +radio);
-                
-                model.put("itemsList", itemsList);
-                //doPost(request, response);
+                errorMessage = "Warning: This message is shown for testing purposes";
+               model.put("warningMessage", errorMessage);
                 template = "simulation.tpl";
+                model.put("message", "");
+               
                 break;   
             case "resetAll":
                 
@@ -153,21 +138,14 @@ public class VendingMachineSimServlet extends HttpServlet {
                 VendingMachineSimDAO.resetItems(jdbcConnection);
                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
              
-               
-               
-               
                 model.put("itemsList", itemsList);
                 template = "simulation.tpl";
                 break;  
             case "buy":
-                //TODO: add method
-               
-                template = "simulation.tpl";
-                break;  
-            case "addList":
+                 errorMessage = "Warning: This message is shown for testing purposes";
+               model.put("warningMessage", errorMessage);
                 template = "simulation.tpl";
                 model.put("message", "");
-                break; 
             default:
                 logger.info("Invalid GET command received: " + command);
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -186,6 +164,7 @@ public class VendingMachineSimServlet extends HttpServlet {
         long timeStart = System.currentTimeMillis();
         logger.debug("IN - doPost()");
         String command = request.getParameter("cmd");
+        String radioButton = request.getParameter("radioItem");
         if (command == null) {
             logger.info("No cmd parameter received");
             command = "";
@@ -195,33 +174,46 @@ public class VendingMachineSimServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         switch (command) {
-            case "addList":
-                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-                String radio = request.getParameter("radioItem");
-                logger.info("Getting radioButton Name: " +radio);
-                model.put("itemsList", itemsList);
-               template = "simulation.tpl";
-               break;
-                
             case "resetItem":
-//                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-//               errorMessage = "";
-//                model.put("warningMessage", errorMessage);
-//               //String radio = request.getParameter("radioItem");
-//               String radio = request.getParameter("radioItem");
-//                
-//                logger.info("Getting radioButton Name: " +radio);
-//               
-//                model.put("itemsList", itemsList);
-//                
-//               template = "simulation.tpl";
+               
+                errorMessage = "";
+                model.put("warningMessage", errorMessage);
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+               //radio = request.getParameter("radioItem");
+               logger.info("Getting radioButton Name: " +radioButton);
+               for(Item item : itemsList){
+               if((item.getItemName().equals(radioButton))) {
+                   
+                VendingMachineSimDAO.resetSpecificItem(jdbcConnection, item.getId());
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                //model.put("itemsList", itemsList);
+                break;
+                } 
+               }
+                 model.put("itemsList", itemsList);
+                template = "simulation.tpl";
                 break; 
+                
             case "replaceItem":
                 template = "replaceItem.tpl";
                break;
             case "buy":
-                
-//        
+                errorMessage = "";
+                model.put("warningMessage", errorMessage);
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                logger.info("Getting radioButton Name: " +radioButton);
+                 for(Item item : itemsList){
+               if((item.getItemName().equals(radioButton))) {
+                   
+                VendingMachineSimDAO.buyItem(jdbcConnection, item.getId(), 1);
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                //model.put("itemsList", itemsList);
+                break;
+                } 
+               }
+                 model.put("itemsList", itemsList);
+                template = "simulation.tpl";
+        
                 break;
                 
             default:
