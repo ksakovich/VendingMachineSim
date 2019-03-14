@@ -323,7 +323,7 @@ td p {
 <div id="main">
 		
 <h1> Vending Machine Demo</h1>
- 
+ <form>
 <!-------------Warning Message----------->
 <#if theItem ??>
 <div class="alert">
@@ -380,17 +380,16 @@ td p {
 	    
         <a href="./sim?cmd=resetItem" class="button button1" type = "submit" value="Submit">Reset Item</a> 
 		<br><br>
-        <a href="./sim?cmd=replaceItem" class="button button2">Replace Item</a> 
+        <a href="./sim?cmd=replaceItem" class="button button2" type = "submit" value="Submit">Replace Item</a> 
 		<br><br>
-	<a href="./sim?cmd=buy" class="button button3" > Buy Item</a> 
+	<a href="./sim?cmd=buy" class="button button3" type = "submit" value="Submit"> Buy Item</a> 
 		<br><br>
-	<a href="./sim?cmd=resetAll" class="button button1">Reset All</a>
+	<a href="./sim?cmd=resetAll" class="button button1" type = "submit" value="Submit">Reset All</a>
                 <br><br><br><br><br><br><br><br><br><br><br>
 	<a href="thankyou.html" class="button button4">Exit</a> 
     </div>
-		
+</form>		
 </div> <!--end main-->
-
                 <div class="cleaner"></div>
                 <div class="cleaner"></div>
          
