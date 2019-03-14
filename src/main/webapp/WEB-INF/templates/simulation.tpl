@@ -106,9 +106,6 @@ width: 180px;
 	width: 560px;
 }
 
-#social_links { float: right; margin: 10px 15px 5px 0 }
-#social_links a { display: inline-block; margin-left: 20px }
-
 #menu {
 	clear: both;
 	float: right;
@@ -158,7 +155,8 @@ width: 180px;
 }
 #main p {
 	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 20px;
+        margin: 0;
+	font-size: 15px;
 	
 }
 #main_bottom { width: 960px; height: 10px; }
@@ -352,7 +350,7 @@ td p {
                   <td>${oneItem}
                         <p>${oneItem.itemName}</p>
                         <p>Quantity: ${oneItem.quantity}</p>
-                        <img src=".\image\${oneItem.image}" height=100 width=100>
+                        <p><img src=".\image\${oneItem.image}" height=100 width=100></p>
                         <p>$ ${oneItem.price}</p>
                         <p>${char}${charCounter}</p>
                         <center>
