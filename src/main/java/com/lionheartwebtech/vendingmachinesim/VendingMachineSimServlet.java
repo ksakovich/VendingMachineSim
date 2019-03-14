@@ -1,4 +1,3 @@
-
 package com.lionheartwebtech.vendingmachinesim;
 
 import java.io.*;
@@ -165,7 +164,10 @@ public class VendingMachineSimServlet extends HttpServlet {
                
                 template = "simulation.tpl";
                 break;  
-                
+            case "addList":
+                template = "simulation.tpl";
+                model.put("message", "");
+                break; 
             default:
                 logger.info("Invalid GET command received: " + command);
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -193,6 +195,14 @@ public class VendingMachineSimServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         switch (command) {
+            case "addList":
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                String radio = request.getParameter("radioItem");
+                logger.info("Getting radioButton Name: " +radio);
+                model.put("itemsList", itemsList);
+               template = "simulation.tpl";
+               break;
+                
             case "resetItem":
 //                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
 //               errorMessage = "";
