@@ -285,7 +285,7 @@ td p {
 <h1> Vending Machine Demo</h1>
  <form method="post">
 <!-------------Warning Message----------->
-<#if theItem ??>
+<#if itemsList ??>
 <div class="alert">
     <center>
         <p>
