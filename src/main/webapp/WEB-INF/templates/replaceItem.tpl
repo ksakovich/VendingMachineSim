@@ -314,7 +314,7 @@ body {
             <br>
 			
             <label for="calories">Calories: </label>
-            <input id="calories" type="calories" name="calories" value="${item.calories)">
+            <input id="calories" type="calories" name="calories" value="${item.calories}">
             <br>
             
              
