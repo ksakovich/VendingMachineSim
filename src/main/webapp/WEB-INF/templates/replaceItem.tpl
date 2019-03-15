@@ -297,24 +297,24 @@ body {
 		
 		  <div id="contact_form">
                
-        <form action="sim?action=update" method="post">
+        <form action="./sim?cmd=replaceItem" method="post">
              
             
             <label for="itemName">Produce Name: </label>
-            <input id="itemName" type="text" name="itemName" value="">
+            <input id="itemName" type="text" name="itemName" value="${item.itemName}">
             <br>
             
             <label for="quantity">Quantity: </label>
-            <input id="quantity" type="text" name="quantity" value="">
+            <input id="quantity" type="text" name="quantity" value="${item.quantity}">
             <br>
             
                         
             <label for="price">Price: </label>
-            <input id="price" type="text" name="price" value="">
+            <input id="price" type="text" name="price" value="${item.price}">
             <br>
 			
             <label for="calories">Calories: </label>
-            <input id="calories" type="calories" name="calories" value="">
+            <input id="calories" type="calories" name="calories" value="item.calories">
             <br>
             
              

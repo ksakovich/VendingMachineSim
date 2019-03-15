@@ -100,6 +100,7 @@ public class VendingMachineSimServlet extends HttpServlet {
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
+        String radioButton = null;
         
         //TODO: Switch for templates
         if(command != null){
@@ -121,8 +122,10 @@ public class VendingMachineSimServlet extends HttpServlet {
             case "replaceItem":
                 //TODO: add model
                 
-                template = "replaceItem.tpl";
-                break; 
+                 template = "replaceItem.tpl";
+                 break;
+                
+                
                 
             case "resetItem":             
                 template = "simulation.tpl";              
@@ -175,7 +178,7 @@ public class VendingMachineSimServlet extends HttpServlet {
                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
             
                logger.info("Getting radioButton Name: " +radioButton);
-               for(Item item : itemsList){
+               for(Item item : itemsList){                 
                if((item.getItemName().equals(radioButton))) {
                    
                 VendingMachineSimDAO.resetSpecificItem(jdbcConnection, item.getId());
@@ -191,7 +194,48 @@ public class VendingMachineSimServlet extends HttpServlet {
                 
             case "replaceItem":
                 //TODO
-                template = "replaceItem.tpl";
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                if(radioButton != null){
+                    logger.info("Not null radioButton Name: " +radioButton);
+                    for(Item item : itemsList){
+                     if((item.getItemName().equals(radioButton))) {
+                    model = loadReplaceItemModel(item);
+                    template = "replaceItem.tpl";
+//                    int id = item.getId();
+//                    String name = request.getParameter("itemName");
+//                    logger.info("Not null radioButton Name: " +name);
+//                    String quantity = request.getParameter("quantity");
+//                    String price = request.getParameter("price");
+//                    String calories = request.getParameter("calories");
+//                    int q = Integer.parseInt(quantity);
+//                    double p = Double.parseDouble(price);
+//                    int c = Integer.parseInt(calories);
+//                    //VendingMachineSimDAO.updateItem(jdbcConnection, id, price, id, c, id);
+//                    VendingMachineSimDAO.updateItem(jdbcConnection, id, name, q, p, c);
+                    }
+                    }
+                }
+                else{
+                logger.info("NULL radioButton Name: " +radioButton);
+                errorMessage = "Please select and Item to be replace";    
+                model.put("warningMessage", errorMessage);
+                model.put("itemsList", itemsList);
+                template = "simulation.tpl";
+                }
+                
+                
+                
+                
+//               itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+//               logger.info("Getting radioButton Name: " +radioButton);
+//               String itemName = request.getParameter("itemName");
+//               logger.info("Getting itemName Input: " +itemName);
+//               for(Item item : itemsList){
+//                   if((item.getItemName().equals(radioButton))) {}
+//               }
+//               model.put("itemsList", itemsList);
+//               template = "replaceItem.tpl";
+               
                break;
                
             case "buy":
@@ -247,14 +291,19 @@ private void processTemplate(HttpServletResponse response, String template, Map<
             logger.error("IO Error:", e);
         } 
     }
-   private String getRadioParameter(HttpServletRequest request){
-       String radio = request.getParameter("radioItem");
-               
-               logger.info("Getting radioButton Name: " +radio);
-               
-               return radio;
-   }
+//   private String getRadioParameter(HttpServletRequest request){
+//       String radio = request.getParameter("radioItem");
+//               
+//               logger.info("Getting radioButton Name: " +radio);
+//               
+//               return radio;
+//   }
     
+    private Map<String, Object> loadReplaceItemModel(Item item){
+    Map<String, Object> model = new HashMap<>();
+    model.put("item", item);
+    return model;
+    }
     
     @Override
     public String getServletInfo() {

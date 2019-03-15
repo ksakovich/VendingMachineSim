@@ -61,11 +61,11 @@ public class VendingMachineSimDAO {
     }
     
     //please review this method
-    public static void updateItem (Connection conn, int id, String productName, int quantity, double price, int calories, String image){
+    public static void updateItem (Connection conn, int id, String productName, int quantity, double price, int calories){
         logger.info("you are in the updateItem method");
         String query = "Update Items SET";
-        query += " (ProductName, Quantity, Price, Calories, Image) = (?, ?, ?, ?, ?) WHERE ID=?";
-        executeSQLUpdateItems(conn, query, productName, ""+quantity, ""+price, ""+calories, image, ""+id);
+        query += " (ProductName, Quantity, Price, Calories) = (?, ?, ?, ?) WHERE ID=?";
+        executeSQLUpdateItems(conn, query, productName, ""+quantity, ""+price, ""+calories, ""+id);
     }
     
     //please review the SQL syntax
