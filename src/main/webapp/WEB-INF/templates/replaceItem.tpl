@@ -299,22 +299,26 @@ body {
                
         <form action="./sim?cmd=replaceItem" method="post">
              
-            
+            <label for="id">Enter an ID from 1 to 9 to Replace item: </label>
+            <input id="id" type="text" name="id" value"" required></input>
+            <br>
+
             <label for="itemName">Produce Name: </label>
-            <input id="itemName" type="text" name="itemName" value="${item.itemName}">
+            <input id="item" type="text" name="itemName" value"" required></input>
             <br>
             
             <label for="quantity">Quantity: </label>
-            <input id="quantity" type="text" name="quantity" value="${item.quantity}">
+            <input type="text" name="quantity" required></input>
+           
             <br>
             
                         
             <label for="price">Price: </label>
-            <input id="price" type="text" name="price" value="${item.price}">
+            <input id="price" type="text" name="price" value"0.0" required></input>
             <br>
 			
             <label for="calories">Calories: </label>
-            <input id="calories" type="calories" name="calories" value="${item.calories}">
+            <input id="calories" type="calories" name="calories" value"0" required></input>
             <br>
             
              

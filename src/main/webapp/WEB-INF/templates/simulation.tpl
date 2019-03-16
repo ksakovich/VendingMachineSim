@@ -305,7 +305,7 @@ td p {
                 <#items as oneItem> 
                 
                   <td>
-                        <!--<p>${oneItem.itemName}</p> -->
+                        <p>${oneItem.itemName}</p>
                         <p>Quantity: ${oneItem.quantity}</p>
                         <p><img src=".\image\${oneItem.image}" height=100 width=100></p>
                         <p>$ ${oneItem.price}</p>
@@ -334,7 +334,8 @@ td p {
     <div class="sidebar">
     <input type="submit" class="button button1" formaction ="./sim?cmd=resetItem" value="Reset Item" />    
         <br><br>
-    <input type="submit" class="button button2" formaction ="./sim?cmd=replaceItem" value="Replace Item" />     
+    <a href="./sim?cmd=replaceItem" class="button button2" type = "submit" value="Submit">Replace Item</a> 
+      
     
         <br><br>
     
