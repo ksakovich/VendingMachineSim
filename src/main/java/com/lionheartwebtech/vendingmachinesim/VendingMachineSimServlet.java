@@ -11,27 +11,26 @@ import freemarker.template.*;
 
 import org.apache.log4j.Logger;
 
-
 public class VendingMachineSimServlet extends HttpServlet {
-    
+
     private static final Logger logger = Logger.getLogger(VendingMachineSimServlet.class.getName());
-    
+
     private static Connection jdbcConnection = null;
     private static Configuration fmConfig = new Configuration(Configuration.getVersion());
     private static final String TEMPLATE_DIR = "/WEB-INF/templates";
     private static List<Item> itemsList;
     private static String errorMessage = "";
-    
+
     @Override
     public void init(ServletConfig config) throws UnavailableException {
         logger.info("==============================");
         logger.info("Starting " + VendingMachineSimServlet.class.getSimpleName() + " servlet init");
         logger.info("==============================");
-        
+
         logger.info("Getting real path for templateDir");
         String templateDir = config.getServletContext().getRealPath(TEMPLATE_DIR);
         logger.info("...real path is: " + templateDir);
-        
+
         logger.info("Initializing Freemarker, templateDir: " + templateDir);
         try {
             fmConfig.setDirectoryForTemplateLoading(new File(templateDir));
@@ -39,9 +38,9 @@ public class VendingMachineSimServlet extends HttpServlet {
         } catch (IOException e) {
             logger.error("Template directory not found, directory: " + templateDir + ", exception: " + e);
         }
-        
-            logger.info("Connecting to the database...");
-        
+
+        logger.info("Connecting to the database...");
+
         String jdbcDriver = "org.mariadb.jdbc.Driver";
         logger.info("Loading JDBC Driver: " + jdbcDriver);
         try {
@@ -56,21 +55,21 @@ public class VendingMachineSimServlet extends HttpServlet {
         connString += "/vashon";
         connString += "?user=vashon&password=vashon";
         connString += "&useSSL=true&trustServerCertificate=true";
-        
-    try {
+
+        try {
             jdbcConnection = DriverManager.getConnection(connString);
         } catch (SQLException e) {
             logger.error("Unable to connect to SQL Database with JDBC string: " + connString);
             throw new UnavailableException("Unable to connect to database.");
         }
-        
+
         logger.info("...connected!");
-        
+
         logger.info("==============================");
         logger.info("Finished init");
         logger.info("==============================");
     }
-    
+
     @Override
     public void destroy() {
         logger.info("##############################");
@@ -84,89 +83,90 @@ public class VendingMachineSimServlet extends HttpServlet {
             logger.error("Exception thrown while trying to close SQL Connection: " + e, e);
         }
         logger.info("Disconneced!");
-        
+
         logger.info("##############################");
         logger.info("...done");
         logger.info("##############################");
     }
-    
+
     //TODO: doGet() 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long timeStart = System.currentTimeMillis();
-        logger.debug("IN - doGet()");      
+        logger.debug("IN - doGet()");
         String command = request.getParameter("cmd");
-        if (command == null) command = "home";
+        if (command == null) {
+            command = "home";
+        }
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
         String radioButton = null;
-        
-        //TODO: Switch for templates
-        if(command != null){
-        switch (command) {
-            case "home":
-                template = "homepage.tpl";
-                break;
-                
-            case "simulation":
-               itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-                  
-               
-               model.put("warningMessage", errorMessage);
-               
-               model.put("itemsList", itemsList);
-                
-                template = "simulation.tpl";
-                break;
-            case "replaceItem":
-                //TODO: add model
-//                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-//                if(radioButton != null){
-//                    logger.info("Not null radioButton Name: " +radioButton);
-//                    
-                    // model.put("itemsList", itemsList);
-                     template = "replaceItem.tpl";
-                     
-               model.put("warningMessage", errorMessage);
+
+        if (command != null) {
+            switch (command) {
+                case "home":
+                    template = "homepage.tpl";
+                    break;
+
+                case "simulation":
+                    itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                    for (Item item : itemsList) {
                     
-//                }
-//                else{
-//                 template = "replaceItem.tpl";
-//                }
-                 break;
-                
-                
-                
-            case "resetItem":             
-                template = "simulation.tpl";              
-                break; 
-                
-            case "resetAll":                
-                errorMessage = "";
-                VendingMachineSimDAO.resetItems(jdbcConnection);
-                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-                model.put("warningMessage", errorMessage);
-                model.put("itemsList", itemsList);
-                template = "simulation.tpl";
-                break;
-                
-            case "buy":
-                template = "simulation.tpl";
-                
-                break;
-               
-            default:
-                logger.info("Invalid GET command received: " + command);
-                response.sendError(HttpServletResponse.SC_NOT_FOUND);
-                return;
-        }
+                        if (item.getQuantity() <= 2) {
+                            errorMessage = "Item quantity is less than 3, please refill soon";
+                            break;
+                        } else {
+                            //VendingMachineSimDAO.resetSpecificItem(jdbcConnection, item.getId());
+                            //itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                            errorMessage = "";
+                            break;
+                        }
+                    
+                }
+                    
+                    
+                    
+                    model.put("warningMessage", errorMessage);
+                    model.put("itemsList", itemsList);
+                    template = "simulation.tpl";
+                    break;
+                    
+                case "replaceItem":
+                    template = "replaceItem.tpl";
+                    model.put("warningMessage", errorMessage);
+                    break;
+
+                case "resetItem":
+                    template = "simulation.tpl";
+                    model.put("warningMessage", errorMessage);
+                    break;
+
+                case "resetAll":
+                    errorMessage = "";
+                    VendingMachineSimDAO.resetItems(jdbcConnection);
+                    itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                    model.put("warningMessage", errorMessage);
+                    model.put("itemsList", itemsList);
+                    template = "simulation.tpl";
+                    break;
+
+                case "buy":
+                    template = "simulation.tpl";
+
+                    break;
+
+                default:
+                    logger.info("Invalid GET command received: " + command);
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                    return;
+            }
         }
 
         processTemplate(response, template, model);
         long time = System.currentTimeMillis() - timeStart;
         logger.info("OUT - doGet() - " + time + "ms");
-    
+
     }
 
     @Override
@@ -184,146 +184,82 @@ public class VendingMachineSimServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         switch (command) {
-            case "resetItem":              
-                errorMessage = "";
-                
+            case "resetItem":
+    
+
                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-            
-               logger.info("Getting radioButton Name: " +radioButton);
-               for(Item item : itemsList){                 
-               if((item.getItemName().equals(radioButton))) {
-                   
-                VendingMachineSimDAO.resetSpecificItem(jdbcConnection, item.getId());
-                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-                //model.put("itemsList", itemsList);
-                break;
-                } 
-               }
-                model.put("warningMessage", errorMessage);
-                model.put("itemsList", itemsList);
-                template = "simulation.tpl";
-                break; 
-                
-            case "replaceItem":
-                logger.info("Not null radioButton Name: " +radioButton);
-                errorMessage = "";
-                getUpdatedItem(request);
-                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-                if(radioButton != null){
-                    
-                  logger.info("Not null radioButton Name: " +radioButton);
-                  for(Item item : itemsList){
-                  //model.put("item", itemsList);
-                  if(item.getItemName().equals(radioButton)){
-                      
-                  }
-                  
-                  }
-                 // model.put("item", itemsList);
-                template = "replaceItem.tpl";
-                break; 
-                }
-                else{
-                logger.info("NULL radioButton Name: " +radioButton);
-                errorMessage = "Please select and Item to be replace";    
-                model.put("warningMessage", errorMessage);
-                model.put("itemsList", itemsList);
-                template = "simulation.tpl";
-                }
-                
-                //model = loadReplaceItemModel(item);
-                //model.put("itemsList", itemsList);
-                //template = "replaceItem.tpl";
-                break; 
-                //TODO
-//                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-//                if(radioButton != null){
-//                    logger.info("Not null radioButton Name: " +radioButton);
-//                    template = "replaceItem.tpl";
-//                    for(Item item : itemsList){
-//                     
-//                        // parse
-////                                    String name = request.getParameter("itemName");
-////                                    String name = parseItems(String itemString)
-////                                    model = loadReplaceItemModel(item);
-////                                    template = "replaceItem.tpl";
-//                    int id = item.getId();
-//                    String name = request.getParameter("itemName");
-//                    String q = request.getParameter("qty");
-//                    int quantity = parseItemInteger(q);
-//                    double price = parseItemDouble(request.getParameter("price"));
-//                    int calories = parseItemInteger(request.getParameter("calories"));
-//                    VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories);
-//                    //model.put("itemsList", itemsList);
-//                    model = loadReplaceItemModel(item);
-//                  
-////                    int q = Integer.parseInt(quantity);
-////                    double p = Double.parseDouble(price);
-////                    int c = Integer.parseInt(calories);
-////                    //VendingMachineSimDAO.updateItem(jdbcConnection, id, price, id, c, id);
-////                    VendingMachineSimDAO.updateItem(jdbcConnection, id, name, q, p, c);
-//                    
-////                    int id = item.getId();
-////                    String name = request.getParameter("itemName");
-////                    String q = request.getParameter("qty");
-////                    int quantity = parseItemInteger(q);
-////                    double price = parseItemDouble(request.getParameter("price"));
-////                    int calories = parseItemInteger(request.getParameter("calories"));
-////                    VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories);
-////                      
-//                    }
-//                }
-//                else{
-//                logger.info("NULL radioButton Name: " +radioButton);
-//                errorMessage = "Please select and Item to be replace";    
-//                model.put("warningMessage", errorMessage);
-//                model.put("itemsList", itemsList);
-//                template = "simulation.tpl";
-//                }
-                
-                //model.put("itemsList", itemsList);
-                //template = "simulation.tpl";
-                
-                
-                
-                
-//               itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-//               logger.info("Getting radioButton Name: " +radioButton);
-//               String itemName = request.getParameter("itemName");
-//               logger.info("Getting itemName Input: " +itemName);
-//               for(Item item : itemsList){
-//                   if((item.getItemName().equals(radioButton))) {}
-//               }
-//               model.put("itemsList", itemsList);
-//               template = "replaceItem.tpl";
-               
-            //   break;
-               
-            case "buy":
-                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-                logger.info("Getting radioButton Name: " +radioButton);
-                 for(Item item : itemsList){
-                    if((item.getItemName().equals(radioButton))) {
-                        if(item.getQuantity() == 0){
-                        errorMessage = "Need to refill Item, please Contact Customer Service";                        
-                        break;
+
+                logger.info("Getting radioButton Name: " + radioButton);
+                for (Item item : itemsList) {
+                    if ((item.getItemName().equals(radioButton))) {
+                        if (item.getQuantity() == 10) {
+                            errorMessage = "Please select an item that las less than 10 in quantity";
+                            break;
+                        } else {
+                            VendingMachineSimDAO.resetSpecificItem(jdbcConnection, item.getId());
+                            itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                            errorMessage = "";
+                            break;
                         }
-                        else{
-                   
-                        VendingMachineSimDAO.buyItem(jdbcConnection, item.getId(), 1);
-                        itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
-                        errorMessage = "";
-                        break;
-                
-                        } 
                     }
                 }
                 model.put("warningMessage", errorMessage);
                 model.put("itemsList", itemsList);
                 template = "simulation.tpl";
-        
                 break;
-                
+
+            case "replaceItem":
+                logger.info("Not null radioButton Name: " + radioButton);
+                errorMessage = "";
+                getUpdatedItem(request);
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+//                if(radioButton != null){
+//                    
+//                  logger.info("Not null radioButton Name: " +radioButton);
+//                  for(Item item : itemsList){
+//           
+//                  if(item.getItemName().equals(radioButton)){
+//                      
+//                  }
+//                  
+//                  }
+//                template = "replaceItem.tpl";
+//                break; 
+//                }
+//                else{
+                //logger.info("NULL radioButton Name: " +radioButton);
+                errorMessage = "Item Imformation has been Updated";
+                model.put("warningMessage", errorMessage);
+                model.put("itemsList", itemsList);
+                template = "simulation.tpl";
+                //}
+
+                break;
+
+            case "buy":
+                itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                logger.info("Getting radioButton Name: " + radioButton);
+                for (Item item : itemsList) {
+                    if ((item.getItemName().equals(radioButton))) {
+                        if (item.getQuantity() == 0) {
+                            errorMessage = "Need to refill Item, please Contact Customer Service";
+                            break;
+                        } else {
+
+                            VendingMachineSimDAO.buyItem(jdbcConnection, item.getId(), 1);
+                            itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
+                            errorMessage = "";
+                            break;
+
+                        }
+                    }
+                }
+                model.put("warningMessage", errorMessage);
+                model.put("itemsList", itemsList);
+                template = "simulation.tpl";
+
+                break;
+
             default:
                 logger.info("Invalid POST command received: " + command);
                 response.sendError(HttpServletResponse.SC_NOT_FOUND);
@@ -333,12 +269,11 @@ public class VendingMachineSimServlet extends HttpServlet {
         processTemplate(response, template, model);
         long time = System.currentTimeMillis() - timeStart;
         logger.debug("OUT - doPost() - " + time + "ms");
-    }        
+    }
 
-
-private void processTemplate(HttpServletResponse response, String template, Map<String, Object> model) {
+    private void processTemplate(HttpServletResponse response, String template, Map<String, Object> model) {
         logger.debug("Processing Template: " + template);
-        
+
         try (PrintWriter out = response.getWriter()) {
             Template view = fmConfig.getTemplate(template);
             view.process(model, out);
@@ -350,34 +285,29 @@ private void processTemplate(HttpServletResponse response, String template, Map<
             logger.error("Parsing Error:", e);
         } catch (IOException e) {
             logger.error("IO Error:", e);
-        } 
+        }
     }
-      private void getUpdatedItem(HttpServletRequest request){
-          //Item item = new item();
-          int id = Integer.parseInt(request.getParameter("id"));
-          //logger.info("GETTING ITEM NAME: " +item.getItemName());
-          String name = request.getParameter("itemName");
-          int quantity = Integer.parseInt(request.getParameter("quantity"));
-          double price = parseItemDouble(request.getParameter("price"));
-          int calories = parseItemInteger(request.getParameter("calories"));
-          VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories);
-          
-      }
-      
-    int parseItemInteger(String itemString){
-    //itemString = itemString.replaceAll(",", "");
-    return Integer.parseInt(itemString);
+
+    private void getUpdatedItem(HttpServletRequest request) {
+        logger.debug("You are getting parameter from Replace Item");
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        String name = request.getParameter("itemName");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        double price = Double.parseDouble(request.getParameter("price"));
+        int calories = Integer.parseInt(request.getParameter("calories"));
+        logger.debug("You updating Database Item");
+        VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories);
+        logger.debug("Item updated in Database");
+
     }
-    double parseItemDouble(String itemString){
-    //itemString = itemString.replaceAll(",", "");
-    return Double.parseDouble(itemString);
+
+    private Map<String, Object> loadReplaceItemModel(Item item) {
+        Map<String, Object> model = new HashMap<>();
+        model.put("item", item);
+        return model;
     }
-    private Map<String, Object> loadReplaceItemModel(Item item){
-    Map<String, Object> model = new HashMap<>();
-    model.put("item", item);
-    return model;
-    }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";
