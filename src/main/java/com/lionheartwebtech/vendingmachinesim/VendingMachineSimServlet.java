@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 public class VendingMachineSimServlet extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(VendingMachineSimServlet.class.getName());
-
     private static Connection jdbcConnection = null;
     private static Configuration fmConfig = new Configuration(Configuration.getVersion());
     private static final String TEMPLATE_DIR = "/WEB-INF/templates";
@@ -65,7 +64,6 @@ public class VendingMachineSimServlet extends HttpServlet {
         }
 
         logger.info("...connected!");
-
         logger.info("==============================");
         logger.info("Finished init");
         logger.info("==============================");
@@ -90,7 +88,6 @@ public class VendingMachineSimServlet extends HttpServlet {
         logger.info("##############################");
     }
 
-    //TODO: doGet() 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         long timeStart = System.currentTimeMillis();
@@ -161,7 +158,6 @@ public class VendingMachineSimServlet extends HttpServlet {
         processTemplate(response, template, model);
         long time = System.currentTimeMillis() - timeStart;
         logger.info("OUT - doGet() - " + time + "ms");
-
     }
 
     @Override
@@ -281,21 +277,6 @@ public class VendingMachineSimServlet extends HttpServlet {
             logger.error("IO Error:", e);
         }
     }
-//
-//    private void getUpdatedItem(int id, HttpServletRequest request) {
-//        logger.debug("You are getting parameter from Replace Item");
-//        //id = Integer.parseInt(request.getParameter("id"));
-//
-//        String name = request.getParameter("itemName");
-//        int quantity = Integer.parseInt(request.getParameter("quantity"));
-//        
-//        double price = Double.parseDouble(request.getParameter("price"));
-//        int calories = 100;
-//        logger.debug("You updating Database Item");
-//        VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories);
-//        logger.debug("Item updated in Database");
-//
-//    }
 
     private Map<String, Object> loadReplaceItemModel(Item item) {
         Map<String, Object> model = new HashMap<>();
@@ -307,5 +288,4 @@ public class VendingMachineSimServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
-
 }

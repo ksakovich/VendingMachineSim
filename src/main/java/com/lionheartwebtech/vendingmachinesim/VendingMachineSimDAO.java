@@ -27,24 +27,6 @@ public class VendingMachineSimDAO {
             }    
         return listOfItems;
     }
-    /*public static Item getItemWithId (Connection conn, int id){
-        logger.info("you are in the getItemWtihId method");
-        String query = "SELECT ID, ProductName,";
-        query += " Quantity, Price, Calories, Image";
-        query += " FROM Items WHERE ID=?";
-        
-        List<Map<String,String>> results = executeSQL(conn, query, ""+id);
-        Item requestedItem = resultsToItem(results.get(0));
-        return requestedItem;
-    }*/
-    
-    /*public static int getItemQuantity (Connection conn, int id){
-        logger.info("you are in the getItemQuantity method");
-        String query = "SELECT Quantity FROM Items WHERE ID=?";
-        List<Map<String,String>> results = executeSQL(conn, query, ""+id);
-        Item requestedItem = resultsToItem(results.get(0));
-        return requestedItem.getQuantity();
-   }*/
     
     public static void buyItem (Connection conn, int id, int amount){
         logger.info("you are in the buyItem method");
@@ -54,7 +36,6 @@ public class VendingMachineSimDAO {
         quantity-=amount;
         query = "UPDATE Items SET Quantity=? WHERE ID=?";
         executeSQLUpdateItems(conn, query, ""+quantity, ""+id);
-        //checkOnQuantities(conn);
     }
     
     public static void updateItem (Connection conn, int id, String productName, int quantity, double price, int calories, String image){
@@ -143,17 +124,6 @@ public class VendingMachineSimDAO {
             
         return true;
     }
-    /*public static void checkOnQuantities (Connection conn){
-        List<Map<String,String>> results = executeSQL(conn, "SELECT Quantity FROM Items ORDER BY ID");
-        int quantity;
-        for (Map<String,String> row : results) {
-            quantity = Integer.parseInt(row.get("Quantity"));
-            if(quantity < 3){
-                //@ToDo
-                //alert the quantity is low
-            }
-        }
-    }*/
       
     private static Item resultsToItem(Map <String,String> row){
         logger.info("you are in the resultsToItems method");
