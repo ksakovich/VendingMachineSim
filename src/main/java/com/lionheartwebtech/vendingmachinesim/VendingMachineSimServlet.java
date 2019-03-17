@@ -220,7 +220,7 @@ public class VendingMachineSimServlet extends HttpServlet {
                 String image = "default.png";
                 logger.debug("You updating Database Item ");
                 logger.info("with " + id + " "+name +" "+quantity+ " "+ price+ " " + calories+" "+ image);
-                VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories);
+                VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories, image);
                 logger.debug("Item updated in Database");     
                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);            
                 errorMessage = "Item Imformation has been Updated";
@@ -281,21 +281,21 @@ public class VendingMachineSimServlet extends HttpServlet {
             logger.error("IO Error:", e);
         }
     }
-
-    private void getUpdatedItem(int id, HttpServletRequest request) {
-        logger.debug("You are getting parameter from Replace Item");
-        //id = Integer.parseInt(request.getParameter("id"));
-
-        String name = request.getParameter("itemName");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        
-        double price = Double.parseDouble(request.getParameter("price"));
-        int calories = 100;
-        logger.debug("You updating Database Item");
-        VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories);
-        logger.debug("Item updated in Database");
-
-    }
+//
+//    private void getUpdatedItem(int id, HttpServletRequest request) {
+//        logger.debug("You are getting parameter from Replace Item");
+//        //id = Integer.parseInt(request.getParameter("id"));
+//
+//        String name = request.getParameter("itemName");
+//        int quantity = Integer.parseInt(request.getParameter("quantity"));
+//        
+//        double price = Double.parseDouble(request.getParameter("price"));
+//        int calories = 100;
+//        logger.debug("You updating Database Item");
+//        VendingMachineSimDAO.updateItem(jdbcConnection, id, name, quantity, price, calories);
+//        logger.debug("Item updated in Database");
+//
+//    }
 
     private Map<String, Object> loadReplaceItemModel(Item item) {
         Map<String, Object> model = new HashMap<>();
