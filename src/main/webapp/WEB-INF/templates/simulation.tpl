@@ -234,10 +234,11 @@ width: 180px;
   color: white;
 }
 table, td {
-  border: 2px solid white;
+  border: 6px solid white;
   border-collapse: collapse;
-  background-color:#A6A6A6;
-  color: black;
+  background-color:#17202A;
+  color: white;
+  box-shadow: 10px 5px 5px #888888;
  
 }
 td {
@@ -343,7 +344,7 @@ td p {
         <br><br>
      <a href="./sim?cmd=resetAll" class="button button1" type = "submit" value="Submit">Reset All</a> 
      
-                <br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
     <a href="thankyou.html" class="button button4">Exit</a> 
     </div>
 </form>       
