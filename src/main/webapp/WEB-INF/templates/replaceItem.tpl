@@ -352,7 +352,7 @@ body {
 <div id="footer_wrapper">
 	<div id="footer">
             
-            Copyright © 2019    Lion's Heart Vending
+            Copyright © 2019  Amira Morghem, Andrea Simental, Kirill Sakovich, Napapis Dekker
            
         
         </div> 

@@ -17,10 +17,9 @@ h1 {
         color: #FFFFFF;
     }
         
-h2, h3, h4, h5, h6 { color: #FFFFFF; font-weight: normal }
-h2 { font-size: 30px; margin: 0 0 30px 0; padding: 0; }
-h3 { font-size: 24px; margin: 0 0 20px; padding: 0; }
+ h4{ color: #FFFFFF; font-weight: normal }
 h4 { font-size: 18px; margin: 0 0 15px; padding: 0; }
+
 #footer_wrapper {
     clear: both;
     width: 100%;
@@ -36,9 +35,7 @@ h4 { font-size: 18px; margin: 0 0 15px; padding: 0; }
     text-align: center;
     color: #d7d4d4;
 }
-#footer a {
-    color: #d7d4d4;
-}
+
 .float_l { float: left }
 body {
     margin: 0;
@@ -239,7 +236,8 @@ width: 180px;
 table, td {
   border: 2px solid white;
   border-collapse: collapse;
-  background-color:#363636;
+  background-color:#A6A6A6;
+  color: black;
  
 }
 td {
@@ -376,7 +374,7 @@ td p {
 <div id="footer_wrapper">
         <div id="footer">
             
-            Copyright © 2019 Lion's Heart Vending
+             Copyright © 2019  Amira Morghem, Andrea Simental, Kirill Sakovich, Napapis Dekker
            
         </div> 
     </div> 
