@@ -311,7 +311,9 @@ td p {
                         <p>$ ${oneItem.price}</p>
                         <p>${char}${charCounter}</p>
                         <center>
-                            <input type="radio" name="radioItem"  value=${oneItem.itemName}>
+                            <input type="radio" name="radioItem"
+                            <#if (oneItem.id == 1)> checked </#if>
+                            value=${oneItem.id}>
                         </center>
                   </td>
                 <#if (x == 2)>
@@ -334,8 +336,8 @@ td p {
     <div class="sidebar">
     <input type="submit" class="button button1" formaction ="./sim?cmd=resetItem" value="Reset Item" />    
         <br><br>
-    <a href="./sim?cmd=replaceItem" class="button button2" type = "submit" value="Submit">Replace Item</a> 
-      
+    
+    <input type="submit" class="button button2" formaction ="./sim?cmd=replaceItemPage" value="Replace Item" />    
     
         <br><br>
     

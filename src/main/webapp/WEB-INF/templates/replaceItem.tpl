@@ -280,7 +280,7 @@ body {
         <div id="main">
 <h1> Replace Item</h1>
 <!-------------Warning Message----------->
-<#if theItem ??>
+<#if itemsList ??>
 <div class="alert">
 
     <center>
@@ -299,9 +299,6 @@ body {
                
         <form action="./sim?cmd=replaceItem" method="post">
              
-            <label for="id">Enter an ID from 1 to 9 to Replace item: </label>
-            <input id="id" type="text" name="id" value"" required></input>
-            <br>
 
             <label for="itemName">Produce Name: </label>
             <input id="item" type="text" name="itemName" value"" required></input>
@@ -317,13 +314,10 @@ body {
             <input id="price" type="text" name="price" value"0.0" required></input>
             <br>
 			
-            <label for="calories">Calories: </label>
-            <input id="calories" type="calories" name="calories" value"0" required></input>
-            <br>
             
              
                     <div class="cleaner"></div>
-                    <input type="submit" name="Submit" value="Submit" class="submit_btn" />
+                    <input type="submit" name="Submit" value="Submit" formaction="./sim?cmd=replaceItem" class="submit_btn" />
            
         </form>
 		</div>
