@@ -303,16 +303,14 @@ body {
             <label for="itemName">Produce Name: </label>
             <input id="item" type="text" name="itemName" value"" required></input>
             <br>
-            
-            <label for="quantity">Quantity: </label>
-            <input type="text" name="quantity" required></input>
-           
             <br>
+           
             
                         
             <label for="price">Price: </label>
             <input id="price" type="text" name="price" value"0.0" required></input>
             <br>
+
 			
             
              

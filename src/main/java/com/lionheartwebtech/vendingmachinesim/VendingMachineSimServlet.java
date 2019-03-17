@@ -179,7 +179,7 @@ public class VendingMachineSimServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
 
         switch (command) {
-            case "resetItem":    
+            case "refillItem":    
                 radioID = Integer.parseInt(radioButton);                
                 itemsList = VendingMachineSimDAO.getListOfItems(jdbcConnection);
                 logger.info("Getting radioButton Name: " + radioID);
@@ -213,8 +213,8 @@ public class VendingMachineSimServlet extends HttpServlet {
                 int id = radioID;
                 logger.info("int id is " + id);           
                 String name = request.getParameter("itemName"); 
-                String q = request.getParameter("quantity");
-                int quantity = Integer.parseInt(q);
+                
+                int quantity = 10;
                 double price = Double.parseDouble(request.getParameter("price"));
                 int calories = 100;
                 String image = "default.png";

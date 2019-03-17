@@ -334,7 +334,7 @@ td p {
 </div>
 <!--------------------------------Buttons------------------------>
     <div class="sidebar">
-    <input type="submit" class="button button1" formaction ="./sim?cmd=resetItem" value="Reset Item" />    
+    <input type="submit" class="button button1" formaction ="./sim?cmd=refillItem" value="Refill Item" />    
         <br><br>
     
     <input type="submit" class="button button2" formaction ="./sim?cmd=replaceItemPage" value="Replace Item" />    
