@@ -27,9 +27,7 @@ public class VendingMachineSimDAO {
             }    
         return listOfItems;
     }
-
-    
-    public static Item getItemWithId (Connection conn, int id){
+    /*public static Item getItemWithId (Connection conn, int id){
         logger.info("you are in the getItemWtihId method");
         String query = "SELECT ID, ProductName,";
         query += " Quantity, Price, Calories, Image";
@@ -38,17 +36,16 @@ public class VendingMachineSimDAO {
         List<Map<String,String>> results = executeSQL(conn, query, ""+id);
         Item requestedItem = resultsToItem(results.get(0));
         return requestedItem;
-    }
+    }*/
     
-    public static int getItemQuantity (Connection conn, int id){
+    /*public static int getItemQuantity (Connection conn, int id){
         logger.info("you are in the getItemQuantity method");
         String query = "SELECT Quantity FROM Items WHERE ID=?";
         List<Map<String,String>> results = executeSQL(conn, query, ""+id);
         Item requestedItem = resultsToItem(results.get(0));
         return requestedItem.getQuantity();
-   }
+   }*/
     
-    //please review the update statment 
     public static void buyItem (Connection conn, int id, int amount){
         logger.info("you are in the buyItem method");
         String query = "SELECT Quantity FROM Items WHERE ID=?";
@@ -57,10 +54,9 @@ public class VendingMachineSimDAO {
         quantity-=amount;
         query = "UPDATE Items SET Quantity=? WHERE ID=?";
         executeSQLUpdateItems(conn, query, ""+quantity, ""+id);
-        checkOnQuantities(conn);
+        //checkOnQuantities(conn);
     }
     
-    //please review this method
     public static void updateItem (Connection conn, int id, String productName, int quantity, double price, int calories){
         
         logger.info("you are in the updateItem method");
@@ -69,11 +65,19 @@ public class VendingMachineSimDAO {
         executeSQLUpdateItems(conn, query, productName, ""+quantity, ""+price, ""+calories, ""+id);
     }
     
-    //please review the SQL syntax
     public static void resetItems (Connection conn){
-        logger.info("you are in the resetItems method");
-        String query = "UPDATE Items SET Quantity = 10 WHERE ID IN ('1','2','3','4','5','6','7','8','9')";
-        executeSQLUpdateItems(conn, query);
+        logger.info("you are in the resetItems method"); 
+        List<String> listOfProductNames = Arrays.asList("Lays", "Reeses", "Chexmix", "m&m", "RoldGold", "Oreo",
+                "Doritos", "Cheetos", "Kitkat");
+        List<String> listOfPrices = Arrays.asList("3", "3.7", "0.9", "1.9", "0.8", "2.1", "3.1", "2.2", "6");
+        List<String> listOfImages = Arrays.asList("lays-classic.png", "Reeses.png", "chexmix.png", "m&m.png", 
+                "preztle.png", "oreo.png", "doritos.png", "cheetos.png", "kitkat.png");
+        String quantity = "10";
+        for(int i =1; i<=9; i++){
+            String query = "UPDATE Items SET";
+            query += " ProductName = ?, Quantity = ?, Price = ?, Image = ? WHERE ID= ?";
+            executeSQLUpdateItems(conn, query, listOfProductNames.get(i-1), quantity, listOfPrices.get(i-1), listOfImages.get(i-1), ""+(i));
+        }
     }
     
     public static void resetSpecificItem (Connection conn, int id){
@@ -121,7 +125,6 @@ public class VendingMachineSimDAO {
         return results;
     }
     
-    //this method needs to be reviewd
     public static boolean executeSQLUpdateItems (Connection conn, String query, String... arguments){
          logger.debug("Executing SQL Update: " + query);
         
@@ -140,7 +143,7 @@ public class VendingMachineSimDAO {
             
         return true;
     }
-    public static void checkOnQuantities (Connection conn){
+    /*public static void checkOnQuantities (Connection conn){
         List<Map<String,String>> results = executeSQL(conn, "SELECT Quantity FROM Items ORDER BY ID");
         int quantity;
         for (Map<String,String> row : results) {
@@ -150,7 +153,7 @@ public class VendingMachineSimDAO {
                 //alert the quantity is low
             }
         }
-    }
+    }*/
       
     private static Item resultsToItem(Map <String,String> row){
         logger.info("you are in the resultsToItems method");
